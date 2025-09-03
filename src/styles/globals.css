@@ -1,76 +1,120 @@
-@import "tailwindcss/preflight";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
-
-/* -------------------------------
-   Root variables for light/dark themes
----------------------------------- */
-:root {
-  --background: #ffffff; /* Light background */
-  --foreground: #000080; /* Navy text */
-  --primary-color: white; /* White buttons/links */
-  --secondary-color: #6b21a8; /* Purple for accents */
-  --card-bg: #ffffff;
-  --card-shadow: rgba(0,0,0,0.05);
-  --font-sans: 'Geist Sans', Arial, Helvetica, sans-serif;
-  --font-mono: 'Geist Mono', monospace;
-}
-
-/* Dark theme */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0b1a33; /* Deep navy */
-    --foreground: #f5d46b; /* Gold highlights */
-    --primary-color: #f5d46b;
-    --secondary-color: #6b21a8;
-  }
-}
-
-/* Global styles */
+/* General Body Styles */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #1f1f1f; /* Dark background to blend with image */
+    color: white;
 }
 
-/* Buttons */
-button {
-  font-family: var(--font-sans);
-  background-color: var(--secondary-color);
-  color: var(--foreground);
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0.5rem 1.5rem;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-button:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
+/* Navbar Container */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #392e8a; /* Deep purple background */
+    padding: 10px 40px;
+    border-radius: 30px;
+    max-width: 1000px;
+    margin: 20px auto 0 auto;
 }
 
-/* Cards */
-.card {
-  background-color: var(--card-bg);
-  border-radius: 1rem;
-  box-shadow: 0 4px 6px var(--card-shadow);
-  padding: 1.5rem;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 15px var(--card-shadow);
+/* Logo Section */
+.navbar .logo img {
+    height: 40px;
+    width: auto;
 }
 
-/* Utility classes */
-.bg-primary { background-color: var(--primary-color); }
-.bg-secondary { background-color: var(--secondary-color); }
-.text-primary { color: var(--primary-color); }
-.text-secondary { color: var(--secondary-color); }
-.rounded-t-3xl {
-  border-top-left-radius: 2rem;
-  border-top-right-radius: 2rem;
+/* Navbar Links */
+.navbar .nav-links {
+    display: flex;
+    gap: 40px;
+}
+
+.navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.navbar .nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* Give Button */
+.navbar .give-button {
+    background-color: white;
+    color: #392e8a;
+    padding: 6px 14px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 18px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .give-button:hover {
+    background-color: #f0f0f0;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    position: relative;
+    padding: 200px 20px 150px 20px;
+    background: url('images/') center center/cover no-repeat;
+    color: white;
+}
+
+/* Main Heading */
+.hero h1 {
+    font-size: 88px;
+    font-weight: 800;
+    margin: 0 0 20px 0;
+    line-height: 1.1;
+}
+
+/* Subheading */
+.hero p.subheading {
+    font-size: 22px;
+    font-weight: 500;
+    color: #6c71ed; /* Light purple shade */
+    margin: 0 0 40px 0;
+}
+
+/* Hero Button */
+.hero .join-btn {
+    background-color: #392e8a;
+    border-radius: 20px;
+    padding: 12px 32px;
+    font-weight: 600;
+    font-size: 18px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.hero .join-btn:hover {
+    background-color: #5951b5;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .navbar {
+        flex-direction: column;
+        border-radius: 20px;
+        padding: 20px;
+    }
+
+    .navbar .nav-links {
+        gap: 20px;
+        margin-top: 10px;
+    }
 }

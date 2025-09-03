@@ -1,4 +1,4 @@
-import '@/styles/globals.css';
+ import '@/styles/globals.css'; // Make sure this path is correct
 import { ReactNode } from 'react';
 import Navbar from '@/components/Navbar';
 
@@ -10,10 +10,12 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-navy text-white font-sans">
+      {/* Use Tailwind classes matching your colors in tailwind.config.js */}
+      <body className="bg-navy text-gold font-sans min-h-screen">
         <Navbar />
-        {children}
+        <main>{children}</main>
       </body>
     </html>
   );
 }
+

@@ -6,34 +6,76 @@ import { Menu, X } from 'lucide-react';
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
+  const navItems = [
+    { name: 'Programs', href: '#programs' },
+    { name: 'Testimonies', href: '#testimonies' },
+    { name: 'About', href: '#about' },
+    { name: 'Churches', href: '#branches' },
+  ];
+
   return (
-    <nav className="bg-purple-900 text-white rounded-2xl px-6 py-4 flex items-center justify-between fixed w-full z-50 shadow-md">
-      <div className="text-xl font-bold">Royalties Youth</div>
+    <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 w-[90%] max-w-7xl bg-[#3f318e] rounded-full px-8 py-4 flex items-center justify-between z-50 shadow-none">
+      
+      {/* Logo */}
+      <div className="flex flex-col text-white">
+        <div className="font-extrabold text-lg sm:text-2xl select-none leading-tight">
+          Royalties <span className="text-xs uppercase font-semibold block -mt-1">Youth Church</span>
+        </div>
+        <div className="text-[9px] uppercase mt-1 font-semibold tracking-widest leading-none">
+          THE GLORIOUS CHURCH
+        </div>
+      </div>
 
       {/* Desktop Menu */}
-      <ul className="hidden md:flex space-x-8 items-center">
-        <li><Link href="#programs" className="hover:text-yellow-400">Programs</Link></li>
-        <li><Link href="#testimonies" className="hover:text-yellow-400">Testimonies</Link></li>
-        <li><Link href="#about" className="hover:text-yellow-400">About</Link></li>
-        <li><Link href="#branches" className="hover:text-yellow-400">Churches</Link></li>
+      <ul className="hidden md:flex space-x-8 items-center text-white font-medium text-sm sm:text-base">
+        {navItems.map((item) => (
+          <li key={item.name}>
+            <Link
+              href={item.href}
+              className="hover:underline transition"
+            >
+              {item.name}
+            </Link>
+          </li>
+        ))}
+
+        {/* Give button */}
+        <li>
+          <button className="bg-white text-[#3f318e] font-semibold rounded-full px-5 py-2 hover:bg-gray-100 transition">
+            Give
+          </button>
+        </li>
       </ul>
 
-      {/* Give Button */}
-      <button className="ml-4 bg-yellow-400 text-purple-900 px-4 py-2 rounded hover:bg-yellow-300">Give</button>
-
-      {/* Mobile Menu */}
-      <div className="md:hidden">
-        <button onClick={() => setOpen(!open)}>
-          {open ? <X size={24} /> : <Menu size={24} />}
+      {/* Hamburger - Small screens (optional if needed) */}
+      <div className="md:hidden text-white">
+        <button onClick={() => setOpen(!open)} aria-label="Toggle menu">
+          {open ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
+      {/* Dropdown - Small screens */}
       {open && (
-        <ul className="absolute top-full left-0 w-full bg-purple-900 flex flex-col items-center space-y-4 py-4 md:hidden">
-          <li><Link href="#programs" onClick={() => setOpen(false)}>Programs</Link></li>
-          <li><Link href="#testimonies" onClick={() => setOpen(false)}>Testimonies</Link></li>
-          <li><Link href="#about" onClick={() => setOpen(false)}>About</Link></li>
-          <li><Link href="#branches" onClick={() => setOpen(false)}>Churches</Link></li>
+        <ul className="absolute top-full left-0 w-full bg-[#3f318e] rounded-b-xl flex flex-col items-center space-y-4 py-6 md:hidden z-40">
+          {navItems.map((item) => (
+            <li key={item.name} className="w-4/5">
+              <Link
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="block text-white text-center rounded-lg py-2 hover:underline"
+              >
+                {item.name}
+              </Link>
+            </li>
+          ))}
+          <li className="w-4/5">
+            <button
+              onClick={() => setOpen(false)}
+              className="w-full bg-white text-[#3f318e] font-semibold rounded-full py-2 hover:bg-gray-100 transition"
+            >
+              Give
+            </button>
+          </li>
         </ul>
       )}
     </nav>
