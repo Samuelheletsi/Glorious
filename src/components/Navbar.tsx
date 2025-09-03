@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { use, useState } from "react";
+import Image from "next/image"; // Use Next.js Image
+import { useState } from "react";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,14 +16,14 @@ export default function Navbar() {
     >
       {/* Logo */}
       <div className="flex items-center space-x-3">
-        <img src="/logo.svg" alt="RYC Logo" className="w-10 h-10" />
+        <Image src="/logo.svg" alt="RYC Logo" width={40} height={40} />
         <div className="text-white font-bold">
           <p className="text-xl font-extrabold">Royalties</p>
           <p className="text-xs uppercase">The Glorious Church</p>
         </div>
       </div>
 
-      {/* Desktop / Medium screen nav links */}
+      {/* Desktop Links */}
       <ul className="hidden md:flex space-x-8 items-center text-white font-semibold text-lg">
         {["Programs", "Testimonies", "About", "Churches"].map((item) => (
           <li key={item} className="hover:text-yellow-400 cursor-pointer">
@@ -36,20 +37,18 @@ export default function Navbar() {
         </li>
       </ul>
 
-      {/* Mobile menu button */}
+      {/* Mobile menu */}
       <button
         onClick={() => setMenuOpen(!menuOpen)}
         className="block md:hidden text-white focus:outline-none"
         aria-label="Toggle menu"
       >
-        {/* Simple Hamburger Icon */}
         <svg
           className="w-7 h-7"
           fill="none"
           stroke="currentColor"
           strokeWidth={2}
           viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
         >
           {menuOpen ? (
             <path

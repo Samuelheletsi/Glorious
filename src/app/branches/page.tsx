@@ -1,22 +1,60 @@
 'use client';
-import branches from '@/data/branches.json';
-import BranchesMap from '@/components/BranchesMap';
+
+import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
 export default function BranchesPage() {
+  const [windowWidth, setWindowWidth] = useState<number | null>(null);
+
+  useEffect(() => {
+    // Runs only in the browser
+    setWindowWidth(window.innerWidth);
+
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <div className="max-w-7xl mx-auto p-4 mt-24">
-      <h2 className="text-3xl font-bold text-[#f5d46b] mb-6">Our Branches</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-        {branches.map((b) => (
-          <div key={b.id} className="bg-[#0b1a33] text-white p-4 rounded shadow">
-            <h3 className="font-bold text-xl mb-2">{b.name}</h3>
-            <p>{b.blurb}</p>
-          </div>
+    <motion.section
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7 }}
+      className="max-w-6xl mx-auto py-16 px-6"
+    >
+      <h1 className="text-4xl font-bold text-primaryPurple mb-6 text-center">
+        Our Branches
+      </h1>
+      <p className="text-center text-gray-600 mb-12">
+        Explore our locations and get in touch with your nearest branch.
+      </p>
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {[
+          { name: 'Downtown Branch', address: '123 Main St, City', phone: '+1 234 567 890' },
+          { name: 'Uptown Branch', address: '456 High St, City', phone: '+1 987 654 321' },
+          { name: 'Suburban Branch', address: '789 Suburb Rd, City', phone: '+1 555 123 456' },
+        ].map((branch) => (
+          <motion.div
+            key={branch.name}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="bg-white shadow-lg rounded-xl p-6 flex flex-col gap-2"
+          >
+            <h2 className="text-xl font-semibold text-primaryPurple">{branch.name}</h2>
+            <p className="text-gray-700">{branch.address}</p>
+            <p className="text-gray-700">{branch.phone}</p>
+          </motion.div>
         ))}
       </div>
 
-      <h3 className="font-bold text-2xl text-[#f5d46b] mb-2">Map</h3>
-      <BranchesMap />
-    </div>
+      {windowWidth !== null && (
+        <p className="mt-8 text-center text-gray-500 text-sm">
+          Current window width: {windowWidth}px
+        </p>
+      )}
+    </motion.section>
   );
 }
