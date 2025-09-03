@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1",
+    "title": "Mandate AHK",
+    "description": "Inviting 50 people for Jesus Alive Miracle Conference",
+    "image": "/images/mandate1.jpg"
+  },
+  {
+    "id": "2",
+    "title": "Evangelism By Fire",
+    "description": "Preaching everywhere in buses, streets, and workplaces",
+    "image": "/images/mandate2.jpg"
+  },
+  {
+    "id": "3",
+    "title": "Ten Crusades",
+    "description": "10 designated spots for soul reaching",
+    "image": "/images/mandate3.jpg"
+  }
+]

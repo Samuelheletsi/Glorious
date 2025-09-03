@@ -1,0 +1,13 @@
+# netlify.toml - Correctly formatted for Next.js 14
+
+[build]
+  # Command to install dependencies and build the project
+  command = "npm install && npm run build"
+  # Output directory for Next.js
+  publish = ".next"
+
+[build.environment]
+  # Force npm to ignore peer dependency conflicts
+  NPM_FLAGS = "--legacy-peer-deps"
+  # Node version matching your local setup
+  NODE_VERSION = "18.20.8"

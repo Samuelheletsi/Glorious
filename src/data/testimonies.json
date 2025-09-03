@@ -1,0 +1,24 @@
+[
+  {
+    "id": "1",
+    "name": "Jane Doe",
+    "message": "She got healed of many illnesses",
+    "image": "/images/testimony1.jpg",
+    "text": "I had been battling with chronic migraines and fatigue for years. After attending the healing service at RYC, I experienced a complete recovery. My faith has been strengthened, and I am grateful for the prayers and support from the church community."
+  },
+  {
+    "id": "2",
+    "name": "John Smith",
+    "message": "I found my purpose in Christ",
+    "image": "/images/testimony2.jpg",
+    "text": "Before joining RYC, I felt lost and without direction. Through the teachings and community at RYC, I discovered my purpose in Christ. I am now actively involved in ministry and helping others find their path."
+  },
+  {
+    "id": "3",
+    "name": "Alice Johnson",
+    "message": "My family was restored through prayer",
+    "image": "/images/testimony3.jpg",
+    "text": "I was struggling with various health issues for years. After attending the healing service at RYC, I experienced a miraculous recovery. My faith has been strengthened, and I am grateful for the prayers and support from the church community."
+  }
+]
+  

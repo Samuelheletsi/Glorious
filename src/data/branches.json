@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "name": "CE-RYC The Perfect Church",
+    "lat": 5.605,
+    "lng": -0.185,
+    "blurb": "A branch where young people grow in faith and purpose.",
+    "image": "/images/branch1.jpg",
+    "socials": {
+      "facebook": "https://www.facebook.com/ce.ryc",
+      "instagram": "https://www.instagram.com/ce.ryc"
+    }
+  },
+  {
+    "id": "2",
+    "name": "HO Church",
+    "lat": 8.608,
+    "lng": -0.080,
+    "blurb": "Focused on community outreach and spiritual growth.",
+    "image": "/images/branch2.jpg",
+    "socials": {
+      "facebook": "https://www.facebook.com/ho.church",
+      "instagram": "https://www.instagram.com/ho.church"
+    }
+  },
+  {
+    "id": "3",
+    "name": "Kumasi Church",
+    "lat": 6.700,
+    "lng": -1.610,
+    "blurb": "A vibrant community spreading the gospel across Kumasi.",
+    "image": "/images/branch3.jpg",
+    "socials": {
+      "facebook": "https://www.facebook.com/kumasi.church",
+      "instagram": "https://www.instagram.com/kumasi.church"
+    }
+  }
+]

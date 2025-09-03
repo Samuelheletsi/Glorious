@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "title": "Sunday Service",
+    "description": "Join us in person or online for a powerful worship experience.",
+    "date": "Every Sunday",
+    "location": "RYC Main Auditorium",
+    "image": "/images/service1.jpg"
+  },
+  {
+    "id": "2",
+    "title": "Youth Fellowship",
+    "description": "Empowering youth to grow in faith and leadership.",
+    "date": "Every Friday",
+    "location": "RYC Youth Hall",
+    "image": "/images/service2.jpg"
+  },
+  {
+    "id": "3",
+    "title": "Ladies Connect",
+    "description": "Special sessions for women to grow spiritually.",
+    "date": "Monthly",
+    "location": "RYC Conference Room",
+    "image": "/images/service3.jpg"
+  }
+]

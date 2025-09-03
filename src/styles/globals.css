@@ -1,0 +1,76 @@
+@import "tailwindcss/preflight";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* -------------------------------
+   Root variables for light/dark themes
+---------------------------------- */
+:root {
+  --background: #ffffff; /* Light background */
+  --foreground: #000080; /* Navy text */
+  --primary-color: white; /* White buttons/links */
+  --secondary-color: #6b21a8; /* Purple for accents */
+  --card-bg: #ffffff;
+  --card-shadow: rgba(0,0,0,0.05);
+  --font-sans: 'Geist Sans', Arial, Helvetica, sans-serif;
+  --font-mono: 'Geist Mono', monospace;
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0b1a33; /* Deep navy */
+    --foreground: #f5d46b; /* Gold highlights */
+    --primary-color: #f5d46b;
+    --secondary-color: #6b21a8;
+  }
+}
+
+/* Global styles */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* Buttons */
+button {
+  font-family: var(--font-sans);
+  background-color: var(--secondary-color);
+  color: var(--foreground);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* Cards */
+.card {
+  background-color: var(--card-bg);
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px var(--card-shadow);
+  padding: 1.5rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px var(--card-shadow);
+}
+
+/* Utility classes */
+.bg-primary { background-color: var(--primary-color); }
+.bg-secondary { background-color: var(--secondary-color); }
+.text-primary { color: var(--primary-color); }
+.text-secondary { color: var(--secondary-color); }
+.rounded-t-3xl {
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+}
