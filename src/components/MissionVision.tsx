@@ -4,24 +4,31 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 export default function MissionVision() {
-  const { ref, inView } = useInView({ triggerOnce: false });
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
 
   return (
-    <section ref={ref} className="px-6 py-20 bg-yellow-400">
-      <h2 className="text-4xl font-bold text-center text-purple-700 mb-4">{missionVision.heading}</h2>
-      <p className="text-orange-600 text-center mb-12">{missionVision.subtext}</p>
+    <section
+      ref={ref}
+      className="bg-[#f4b914] py-16 text-center text-[#3b3395] px-6"
+    >
+      {/* Heading */}
+      <h2 className="text-3xl md:text-4xl font-bold">
+        {missionVision.heading}
+      </h2>
+      <p className="mt-2 font-medium">{missionVision.subtext}</p>
 
-      <div className="flex flex-col md:flex-row gap-6 justify-center">
-        {missionVision.cards.map((card, i) => (
+      {/* Cards */}
+      <div className="mt-10 flex flex-col md:flex-row gap-6 max-w-5xl mx-auto">
+        {missionVision.cards.map((card, index) => (
           <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 50 }}
+            key={index}
+            initial={{ opacity: 0, y: 40 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="bg-white rounded-xl shadow p-6 flex-1 text-center"
+            transition={{ duration: 0.6, delay: index * 0.2 }}
+            className="bg-white text-[#3b3395] rounded-xl p-6 flex-1 text-left shadow-lg"
           >
-            <h3 className="text-purple-700 font-bold text-xl mb-2">{card.title}</h3>
-            <p className="text-gray-700">{card.text}</p>
+            <h3 className="text-xl font-bold mb-3">{card.title}</h3>
+            <p className="leading-relaxed">{card.text}</p>
           </motion.div>
         ))}
       </div>

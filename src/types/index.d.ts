@@ -52,7 +52,7 @@ export interface Testimony {
   name: string;
   message: string;
   image?: string;
-  "text": string;
+  text: string;
 }
 
 export interface Mandate {
@@ -76,10 +76,21 @@ export interface Branch {
   image: string;
 }
 
-// Optional: define types for scripture challenge JSON
 export interface ScriptureData {
   title: string;
   subtitle: string;
   grid: string[][];
   clues: string[];
+}
+
+// -------------------------------
+// Services (for service.json)
+// -------------------------------
+export interface Service {
+  id: string;
+  title: string;
+  description: string;
+  date: string;
+  location: string;
+  image: string;
 }

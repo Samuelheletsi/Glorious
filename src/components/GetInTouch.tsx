@@ -1,60 +1,123 @@
 'use client';
-import contactData from '@/data/contact.json';
+
+import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 export default function GetInTouch() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Here you would send data to your API or email service
+    console.log(formData);
+    setSubmitted(true);
+    setFormData({ name: '', email: '', message: '' });
+  };
+
   return (
-    <section className="px-6 py-20 bg-[#3D367E] text-white">
-      <h2 className="text-3xl font-bold text-center mb-2">Get In Touch</h2>
-      <p className="text-center text-sm mb-10 max-w-2xl mx-auto">
-        Have a question, a prayer request, or just want to say hello? We'd love to hear from you.
+    <motion.section
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7 }}
+      className="max-w-5xl mx-auto py-16 px-6"
+    >
+      <h1 className="text-4xl font-bold text-primaryPurple mb-6 text-center">Get in Touch</h1>
+      <p className="text-center text-gray-600 mb-12">
+        We'd love to hear from you! Fill out the form below or reach us via email or phone.
       </p>
 
-      {/* form wrapper centered */}
-      <div className="flex justify-center">
-        <form className="w-full max-w-xl bg-[#4F4599] rounded-2xl p-8 flex flex-col gap-6 shadow-lg">
-          <div className="flex gap-4 flex-col sm:flex-row">
+      <div className="grid md:grid-cols-2 gap-12">
+        {/* Contact Form */}
+        <motion.form
+          onSubmit={handleSubmit}
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
+          className="bg-white shadow-lg rounded-xl p-8 flex flex-col gap-4"
+        >
+          {submitted && (
+            <p className="text-green-600 font-semibold mb-4">Thank you! Your message has been sent.</p>
+          )}
+          <label className="flex flex-col text-gray-700 font-medium">
+            Name
             <input
               type="text"
-              placeholder="Name"
-              className="flex-1 px-4 py-3 rounded-md border border-transparent placeholder-gray-600 bg-[#fbfbfe]"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              className="border rounded-md p-3 mt-2 focus:outline-none focus:ring-2 focus:ring-primaryPurple"
             />
+          </label>
+          <label className="flex flex-col text-gray-700 font-medium">
+            Email
             <input
-              type="text"
-              placeholder="Surname"
-              className="flex-1 px-4 py-3 rounded-md border border-transparent placeholder-gray-600 bg-[#fbfbfe]"
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              className="border rounded-md p-3 mt-2 focus:outline-none focus:ring-2 focus:ring-primaryPurple"
             />
-          </div>
-          <input
-            type="email"
-            placeholder="Email"
-            className="px-4 py-3 rounded-md border border-transparent placeholder-gray-600 bg-[#fbfbfe] w-full"
-          />
-          <select
-            className="px-4 py-3 rounded-md border border-transparent text-gray-700 bg-[#fbfbfe] w-full"
-            defaultValue=""
-          >
-            <option disabled value="">
-              Select an area of interest
-            </option>
-            {contactData.interests.map((i, idx) => (
-              <option key={idx} value={i}>
-                {i}
-              </option>
-            ))}
-          </select>
-          <textarea
-            placeholder="Message"
-            className="px-4 py-3 rounded-md border border-transparent placeholder-gray-600 bg-[#fbfbfe] w-full resize-none"
-            rows={5}
-          ></textarea>
+          </label>
+          <label className="flex flex-col text-gray-700 font-medium">
+            Message
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+              rows={5}
+              className="border rounded-md p-3 mt-2 focus:outline-none focus:ring-2 focus:ring-primaryPurple"
+            />
+          </label>
           <button
             type="submit"
-            className="bg-yellow-400 text-black font-bold px-8 py-3 rounded-md w-max mx-auto hover:bg-yellow-300 transition"
+            className="bg-primaryPurple text-white py-3 px-6 rounded-lg mt-4 hover:bg-highlightYellow transition"
           >
-            Submit
+            Send Message
           </button>
-        </form>
+        </motion.form>
+
+        {/* Contact Info */}
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
+          className="flex flex-col justify-center gap-6 text-gray-700"
+        >
+          <div>
+            <h2 className="text-xl font-semibold mb-2">Email</h2>
+            <p>info@royaltiesyouthchurch.org</p>
+          </div>
+          <div>
+            <h2 className="text-xl font-semibold mb-2">Phone</h2>
+            <p>+1 234 567 890</p>
+          </div>
+          <div>
+            <h2 className="text-xl font-semibold mb-2">Address</h2>
+            <p>123 Glorious Street, City, Country</p>
+          </div>
+          <div>
+            <h2 className="text-xl font-semibold mb-2">Follow Us</h2>
+            <div className="flex space-x-4">
+              <a href="#" className="hover:text-primaryPurple">Facebook</a>
+              <a href="#" className="hover:text-primaryPurple">Instagram</a>
+              <a href="#" className="hover:text-primaryPurple">YouTube</a>
+            </div>
+          </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

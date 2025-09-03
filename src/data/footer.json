@@ -1,8 +1,17 @@
 {
   "title": "THE GLORIOUS CHURCH",
-  "location": "Jewima Hotel, Spintex",
-  "email": "info@royaltyyouth.org",
-  "social": {
+  "location": {
+     "name": "Christ Embassy Royalties Youth",
+    "url": "https://goo.gl/maps/xyz123",
+    "address": "1234 Church St, City, Country"
+  } ,
+  "contact":{
+    "phone": "+123 456 7890",
+    "whatsapp": "+123 456 7890",
+    "email":"info@royaltyyouth.org"
+  }
+   ,
+  "socials": {
     "instagram": "https://instagram.com/ryc",
     "twitter": "https://twitter.com/ryc",
     "youtube": "https://youtube.com/ryc"

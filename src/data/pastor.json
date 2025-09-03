@@ -1,5 +1,7 @@
 {
-  "name": "Pastor David Osae Oppong",
   "image": "/images/pastor.jpg",
-  "message": "You are royalty! Chosen by God for a glorious purpose..."
+  "title": "Pastor David Osae Oppong",
+  "description": "You are royalty! Chosen by God for a glorious purpose...",
+  "buttonText": "Learn More",
+  "buttonLink": "/about"
 }

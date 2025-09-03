@@ -1,8 +1,9 @@
 'use client';
 import Hero from '@/components/Hero';
-import PastorWord from '@/components/PastorWord';
+import pastorData from '@/data/pastor.json';
+import PastorSection from '@/components/PastorSection';
 import WordOfTheMonth from '@/components/WordOfTheMonth';
-import Services from '@/components/Services';
+import Services from '@/components/ServicesSection';
 import MissionVision from '@/components/MissionVision';
 import Rhapsody from '@/components/Rhapsody';
 import WhatsHappening from '@/components/WhatsHappening';
@@ -16,7 +17,7 @@ export default function page() {
   return (
     <main className="flex flex-col pt-20">
       <Hero />
-      <PastorWord />
+      <PastorSection data={pastorData} />
       <WordOfTheMonth />
       <Services />
       <MissionVision />

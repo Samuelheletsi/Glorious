@@ -1,83 +1,71 @@
-'use client';
-import Link from 'next/link';
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+"use client";
+
+import { motion } from "framer-motion";
+import { use, useState } from "react";
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
-
-  const navItems = [
-    { name: 'Programs', href: '#programs' },
-    { name: 'Testimonies', href: '#testimonies' },
-    { name: 'About', href: '#about' },
-    { name: 'Churches', href: '#branches' },
-  ];
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 w-[90%] max-w-7xl bg-[#3f318e] rounded-full px-8 py-4 flex items-center justify-between z-50 shadow-none">
-      
+    <motion.nav
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="bg-primaryPurple rounded-full max-w-[1100px] mx-auto flex justify-between items-center py-3 px-8 mt-6"
+    >
       {/* Logo */}
-      <div className="flex flex-col text-white">
-        <div className="font-extrabold text-lg sm:text-2xl select-none leading-tight">
-          Royalties <span className="text-xs uppercase font-semibold block -mt-1">Youth Church</span>
-        </div>
-        <div className="text-[9px] uppercase mt-1 font-semibold tracking-widest leading-none">
-          THE GLORIOUS CHURCH
+      <div className="flex items-center space-x-3">
+        <img src="/logo.svg" alt="RYC Logo" className="w-10 h-10" />
+        <div className="text-white font-bold">
+          <p className="text-xl font-extrabold">Royalties</p>
+          <p className="text-xs uppercase">The Glorious Church</p>
         </div>
       </div>
 
-      {/* Desktop Menu */}
-      <ul className="hidden md:flex space-x-8 items-center text-white font-medium text-sm sm:text-base">
-        {navItems.map((item) => (
-          <li key={item.name}>
-            <Link
-              href={item.href}
-              className="hover:underline transition"
-            >
-              {item.name}
-            </Link>
+      {/* Desktop / Medium screen nav links */}
+      <ul className="hidden md:flex space-x-8 items-center text-white font-semibold text-lg">
+        {["Programs", "Testimonies", "About", "Churches"].map((item) => (
+          <li key={item} className="hover:text-yellow-400 cursor-pointer">
+            {item}
           </li>
         ))}
-
-        {/* Give button */}
         <li>
-          <button className="bg-white text-[#3f318e] font-semibold rounded-full px-5 py-2 hover:bg-gray-100 transition">
+          <button className="bg-white text-primaryPurple px-5 py-2 rounded-full font-semibold hover:bg-yellow-400 transition">
             Give
           </button>
         </li>
       </ul>
 
-      {/* Hamburger - Small screens (optional if needed) */}
-      <div className="md:hidden text-white">
-        <button onClick={() => setOpen(!open)} aria-label="Toggle menu">
-          {open ? <X size={28} /> : <Menu size={28} />}
-        </button>
-      </div>
-
-      {/* Dropdown - Small screens */}
-      {open && (
-        <ul className="absolute top-full left-0 w-full bg-[#3f318e] rounded-b-xl flex flex-col items-center space-y-4 py-6 md:hidden z-40">
-          {navItems.map((item) => (
-            <li key={item.name} className="w-4/5">
-              <Link
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="block text-white text-center rounded-lg py-2 hover:underline"
-              >
-                {item.name}
-              </Link>
-            </li>
-          ))}
-          <li className="w-4/5">
-            <button
-              onClick={() => setOpen(false)}
-              className="w-full bg-white text-[#3f318e] font-semibold rounded-full py-2 hover:bg-gray-100 transition"
-            >
-              Give
-            </button>
-          </li>
-        </ul>
-      )}
-    </nav>
+      {/* Mobile menu button */}
+      <button
+        onClick={() => setMenuOpen(!menuOpen)}
+        className="block md:hidden text-white focus:outline-none"
+        aria-label="Toggle menu"
+      >
+        {/* Simple Hamburger Icon */}
+        <svg
+          className="w-7 h-7"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={2}
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {menuOpen ? (
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          ) : (
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          )}
+        </svg>
+      </button>
+    </motion.nav>
   );
 }

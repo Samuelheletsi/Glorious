@@ -4,19 +4,30 @@ import { FaInstagram } from 'react-icons/fa';
 
 export default function Branches() {
   return (
-    <section className="px-6 py-20 bg-white max-w-7xl mx-auto z-70" id='churches'>
-      <h2 className="text-3xl font-extrabold text-center mb-12 uppercase">Our Other Branches</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-        {branches.map((b, idx) => (
+    <section className="py-12 px-6 max-w-5xl mx-auto">
+      <h2 className="text-center text-3xl font-bold text-primaryPurple">
+        OUR OTHER BRANCHES
+      </h2>
+
+      <div className="mt-10 grid gap-8 md:grid-cols-3">
+        {branches.map((branch) => (
           <div
-            key={b.id}
-            className={`border-t md:border-t-0 md:border-l md:first:border-l-0 border-gray-300 pt-6 md:pt-0 md:px-6 flex flex-col gap-3`}
+            key={branch.id}
+            className="bg-white shadow-lg rounded-2xl p-6 text-center flex flex-col items-center"
           >
-            <h3 className="font-extrabold text-black uppercase">{b.name}</h3>
-            <p className="text-gray-700">{b.blurb}</p>
-            <a href={b.socials?.instagram ?? '#'} aria-label={`${b.name} Instagram`} className="text-purple-700 hover:text-purple-900 text-lg mt-auto">
-              <FaInstagram />
-            </a>
+            <h3 className="text-xl font-semibold">{branch.name}</h3>
+            <p className="mt-3 text-gray-600">{branch.blurb}</p>
+            
+            {branch.socials?.instagram && (
+              <a
+                href={branch.socials.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 text-primaryPurple hover:text-lightPurple transition-colors"
+              >
+                <FaInstagram size={28} />
+              </a>
+            )}
           </div>
         ))}
       </div>
