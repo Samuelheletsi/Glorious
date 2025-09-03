@@ -9,26 +9,64 @@ export default function MissionVision() {
   return (
     <section
       ref={ref}
-      className="bg-[#f4b914] py-16 text-center text-[#3b3395] px-6"
+      style={{
+        backgroundColor: '#f4b914',
+        padding: '4rem 1.5rem',
+        textAlign: 'center',
+        color: '#3b3395',
+      }}
     >
       {/* Heading */}
-      <h2 className="text-3xl md:text-4xl font-bold">
+      <h2
+        style={{
+          fontSize: '1.875rem', // ~text-3xl
+          fontWeight: 700,
+        }}
+      >
         {missionVision.heading}
       </h2>
-      <p className="mt-2 font-medium">{missionVision.subtext}</p>
+      <p style={{ marginTop: '0.5rem', fontWeight: 500 }}>
+        {missionVision.subtext}
+      </p>
 
       {/* Cards */}
-      <div className="mt-10 flex flex-col md:flex-row gap-6 max-w-5xl mx-auto">
+      <div
+        style={{
+          marginTop: '2.5rem',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1.5rem',
+          maxWidth: '64rem',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        }}
+      >
         {missionVision.cards.map((card, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 40 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: index * 0.2 }}
-            className="bg-white text-[#3b3395] rounded-xl p-6 flex-1 text-left shadow-lg"
+            style={{
+              backgroundColor: 'white',
+              color: '#3b3395',
+              borderRadius: '0.75rem',
+              padding: '1.5rem',
+              flex: 1,
+              textAlign: 'left',
+              boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+            }}
           >
-            <h3 className="text-xl font-bold mb-3">{card.title}</h3>
-            <p className="leading-relaxed">{card.text}</p>
+            <h3
+              style={{
+                fontSize: '1.25rem',
+                fontWeight: 700,
+                marginBottom: '0.75rem',
+              }}
+            >
+              {card.title}
+            </h3>
+            <p style={{ lineHeight: '1.625' }}>{card.text}</p>
           </motion.div>
         ))}
       </div>

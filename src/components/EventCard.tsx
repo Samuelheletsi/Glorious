@@ -10,22 +10,62 @@ export default function EventCard({ event }: { event: Event }) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: false }}
-      className="shadow-lg rounded-2xl p-5 bg-white text-left flex flex-col"
+      style={{
+        boxShadow: '0 10px 15px rgba(0,0,0,0.1)',
+        borderRadius: '1rem',
+        padding: '1.25rem',
+        backgroundColor: '#fff',
+        textAlign: 'left',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
     >
       <img
         src={event.images[0]}
         alt={event.title}
-        className="rounded-xl w-full mb-4"
+        style={{
+          borderRadius: '0.75rem',
+          width: '100%',
+          marginBottom: '1rem',
+        }}
       />
-      <h3 className="text-xl font-semibold">{event.title}</h3>
+      <h3 style={{ fontSize: '1.25rem', fontWeight: 600 }}>
+        {event.title}
+      </h3>
       <Link
         href="#"
-        className="text-primaryPurple font-bold block mt-2 hover:underline"
+        style={{
+          color: '#3b3395', // primaryPurple
+          fontWeight: '700',
+          display: 'block',
+          marginTop: '0.5rem',
+          textDecoration: 'none',
+        }}
+        onMouseEnter={(e) => (e.currentTarget.style.textDecoration = 'underline')}
+        onMouseLeave={(e) => (e.currentTarget.style.textDecoration = 'none')}
       >
         {event.description}
       </Link>
-      <p className="mt-2 text-gray-600">{event.date}</p>
-      <button className="btn btn-purple mt-4">Be Involved</button>
+      <p style={{ marginTop: '0.5rem', color: '#4B5563' /* gray-600 */ }}>
+        {event.date}
+      </p>
+      <button
+        style={{
+          marginTop: '1rem',
+          backgroundColor: '#3b3395',
+          color: '#fff',
+          padding: '0.75rem 1.25rem',
+          borderRadius: '0.75rem',
+          fontWeight: 600,
+          border: 'none',
+          cursor: 'pointer',
+          transition: 'background 0.3s ease',
+        }}
+        onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#292471')}
+        onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#3b3395')}
+      >
+        Be Involved
+      </button>
     </motion.div>
   );
 }

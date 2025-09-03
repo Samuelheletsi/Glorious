@@ -12,19 +12,29 @@ export default function GetInTouch() {
 
   const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Send form data to your API here
     console.log(formData);
     setSubmitted(true);
     setFormData({ name: '', email: '', message: '' });
-    setTimeout(() => setSubmitted(false), 5000); // auto-hide message
+  };
+
+  const inputStyle = {
+    border: '1px solid #ccc',
+    borderRadius: '0.5rem',
+    padding: '0.75rem',
+    marginTop: '0.5rem',
+    outline: 'none',
+    width: '100%',
+  };
+
+  const inputFocusStyle = {
+    borderColor: '#3b3395', // primaryPurple
+    boxShadow: '0 0 0 2px #3b3395',
   };
 
   return (
@@ -32,31 +42,53 @@ export default function GetInTouch() {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}
-      className="max-w-6xl mx-auto py-16 px-6 md:px-12"
+      style={{ maxWidth: '80rem', margin: '0 auto', padding: '4rem 1.5rem' }}
     >
-      <h1 className="text-4xl md:text-5xl font-bold text-primaryPurple mb-6 text-center">
+      <h1
+        style={{
+          fontSize: '2.25rem',
+          fontWeight: 800,
+          color: '#3b3395', // primaryPurple
+          marginBottom: '1.5rem',
+          textAlign: 'center',
+        }}
+      >
         Get in Touch
       </h1>
-      <p className="text-center text-gray-600 mb-12 text-lg md:text-xl">
-        We&apos;d love to hear from you! Fill out the form below or reach us via
-        email or phone.
+      <p style={{ textAlign: 'center', color: '#4B5563', marginBottom: '3rem' }}>
+        We'd love to hear from you! Fill out the form below or reach us via email or phone.
       </p>
 
-      <div className="grid md:grid-cols-2 gap-12">
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gap: '3rem',
+        }}
+      >
         {/* Contact Form */}
         <motion.form
           onSubmit={handleSubmit}
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
-          className="bg-white shadow-lg rounded-2xl p-8 flex flex-col gap-4"
+          style={{
+            backgroundColor: '#fff',
+            borderRadius: '1rem',
+            padding: '2rem',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1rem',
+            boxShadow: '0 10px 15px rgba(0,0,0,0.1)',
+          }}
         >
           {submitted && (
-            <p className="text-green-600 font-semibold mb-4 text-center">
+            <p style={{ color: '#16A34A', fontWeight: 600, marginBottom: '1rem' }}>
               Thank you! Your message has been sent.
             </p>
           )}
-          <label className="flex flex-col text-gray-700 font-medium">
+
+          <label style={{ display: 'flex', flexDirection: 'column', fontWeight: 500, color: '#374151' }}>
             Name
             <input
               type="text"
@@ -64,11 +96,13 @@ export default function GetInTouch() {
               value={formData.name}
               onChange={handleChange}
               required
-              placeholder="Your name"
-              className="border rounded-lg p-3 mt-2 focus:outline-none focus:ring-2 focus:ring-primaryPurple"
+              style={inputStyle}
+              onFocus={(e) => Object.assign(e.currentTarget.style, inputFocusStyle)}
+              onBlur={(e) => Object.assign(e.currentTarget.style, inputStyle)}
             />
           </label>
-          <label className="flex flex-col text-gray-700 font-medium">
+
+          <label style={{ display: 'flex', flexDirection: 'column', fontWeight: 500, color: '#374151' }}>
             Email
             <input
               type="email"
@@ -76,11 +110,13 @@ export default function GetInTouch() {
               value={formData.email}
               onChange={handleChange}
               required
-              placeholder="you@example.com"
-              className="border rounded-lg p-3 mt-2 focus:outline-none focus:ring-2 focus:ring-primaryPurple"
+              style={inputStyle}
+              onFocus={(e) => Object.assign(e.currentTarget.style, inputFocusStyle)}
+              onBlur={(e) => Object.assign(e.currentTarget.style, inputStyle)}
             />
           </label>
-          <label className="flex flex-col text-gray-700 font-medium">
+
+          <label style={{ display: 'flex', flexDirection: 'column', fontWeight: 500, color: '#374151' }}>
             Message
             <textarea
               name="message"
@@ -88,13 +124,32 @@ export default function GetInTouch() {
               onChange={handleChange}
               required
               rows={5}
-              placeholder="Your message"
-              className="border rounded-lg p-3 mt-2 focus:outline-none focus:ring-2 focus:ring-primaryPurple"
+              style={inputStyle}
+              onFocus={(e) => Object.assign(e.currentTarget.style, inputFocusStyle)}
+              onBlur={(e) => Object.assign(e.currentTarget.style, inputStyle)}
             />
           </label>
+
           <button
             type="submit"
-            className="bg-primaryPurple text-white py-3 px-6 rounded-lg mt-4 hover:bg-highlightYellow hover:text-primaryPurple transition-colors duration-300"
+            style={{
+              backgroundColor: '#3b3395',
+              color: '#fff',
+              padding: '0.75rem 1.5rem',
+              borderRadius: '0.5rem',
+              fontWeight: 600,
+              marginTop: '1rem',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = '#FBBF24'; // highlightYellow
+              e.currentTarget.style.color = '#3b3395';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = '#3b3395';
+              e.currentTarget.style.color = '#fff';
+            }}
           >
             Send Message
           </button>
@@ -105,44 +160,32 @@ export default function GetInTouch() {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
-          className="flex flex-col justify-center gap-6 text-gray-700"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            gap: '1.5rem',
+            color: '#374151',
+          }}
         >
           <div>
-            <h2 className="text-xl md:text-2xl font-semibold mb-2">Email</h2>
+            <h2 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.5rem' }}>Email</h2>
             <p>info@royaltiesyouthchurch.org</p>
           </div>
           <div>
-            <h2 className="text-xl md:text-2xl font-semibold mb-2">Phone</h2>
+            <h2 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.5rem' }}>Phone</h2>
             <p>+1 234 567 890</p>
           </div>
           <div>
-            <h2 className="text-xl md:text-2xl font-semibold mb-2">Address</h2>
+            <h2 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.5rem' }}>Address</h2>
             <p>123 Glorious Street, City, Country</p>
           </div>
           <div>
-            <h2 className="text-xl md:text-2xl font-semibold mb-2">Follow Us</h2>
-            <div className="flex space-x-4">
-              <a
-                href="#"
-                className="hover:text-primaryPurple transition-colors duration-300"
-                aria-label="Facebook"
-              >
-                Facebook
-              </a>
-              <a
-                href="#"
-                className="hover:text-primaryPurple transition-colors duration-300"
-                aria-label="Instagram"
-              >
-                Instagram
-              </a>
-              <a
-                href="#"
-                className="hover:text-primaryPurple transition-colors duration-300"
-                aria-label="YouTube"
-              >
-                YouTube
-              </a>
+            <h2 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.5rem' }}>Follow Us</h2>
+            <div style={{ display: 'flex', gap: '1rem' }}>
+              <a href="#" style={{ color: '#3b3395', textDecoration: 'none' }}>Facebook</a>
+              <a href="#" style={{ color: '#3b3395', textDecoration: 'none' }}>Instagram</a>
+              <a href="#" style={{ color: '#3b3395', textDecoration: 'none' }}>YouTube</a>
             </div>
           </div>
         </motion.div>

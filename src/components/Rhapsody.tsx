@@ -9,14 +9,23 @@ export default function Rhapsody() {
   return (
     <section
       ref={ref}
-      className="bg-primaryPurple text-white py-16 px-6 text-center"
+      style={{
+        backgroundColor: '#3b3395', // primaryPurple
+        color: 'white',
+        padding: '4rem 1.5rem',
+        textAlign: 'center',
+      }}
     >
       {/* Title */}
       <motion.h2
         initial={{ opacity: 0, y: -30 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
-        className="text-3xl md:text-4xl font-bold"
+        style={{
+          fontSize: '2rem', // ~text-3xl
+          fontWeight: 700,
+          marginBottom: '0.5rem',
+        }}
       >
         {rhapsodyData.title}
       </motion.h2>
@@ -26,7 +35,13 @@ export default function Rhapsody() {
         initial={{ opacity: 0 }}
         animate={inView ? { opacity: 1 } : {}}
         transition={{ delay: 0.3, duration: 0.8 }}
-        className="max-w-3xl mx-auto mt-6 text-lg md:text-xl leading-relaxed text-gray-100"
+        style={{
+          maxWidth: '48rem', // ~max-w-3xl
+          margin: '1.5rem auto 0',
+          fontSize: '1.125rem', // ~text-lg
+          lineHeight: '1.75rem',
+          color: '#f3f4f6',
+        }}
       >
         {rhapsodyData.description}
       </motion.p>
@@ -36,13 +51,36 @@ export default function Rhapsody() {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={inView ? { opacity: 1, scale: 1 } : {}}
         transition={{ delay: 0.6, duration: 0.6 }}
-        className="bg-darkBg mt-12 p-8 rounded-2xl max-w-2xl mx-auto shadow-lg"
+        style={{
+          backgroundColor: '#0b1a33', // darkBg
+          marginTop: '3rem',
+          padding: '2rem',
+          borderRadius: '1rem',
+          maxWidth: '40rem', // ~max-w-2xl
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+        }}
       >
-        <h3 className="text-2xl font-semibold mb-3">
+        <h3
+          style={{
+            fontSize: '1.5rem',
+            fontWeight: 600,
+            marginBottom: '0.75rem',
+          }}
+        >
           {rhapsodyData.prayer.title}
         </h3>
-        <p className="mb-4">{rhapsodyData.prayer.intro}</p>
-        <p className="max-w-xl mx-auto text-base md:text-lg leading-relaxed text-gray-200">
+        <p style={{ marginBottom: '1rem' }}>{rhapsodyData.prayer.intro}</p>
+        <p
+          style={{
+            maxWidth: '36rem',
+            margin: '0 auto',
+            fontSize: '1.125rem',
+            lineHeight: '1.75rem',
+            color: '#e5e7eb',
+          }}
+        >
           {rhapsodyData.prayer.text}
         </p>
       </motion.div>

@@ -1,4 +1,3 @@
-import '@/styles/globals.css';
 import { ReactNode } from 'react';
 import Navbar from '@/components/Navbar';
 
@@ -10,7 +9,15 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-darkBg text-highlightYellow font-sans min-h-screen">
+      <body
+        style={{
+          backgroundColor: '#1C1C1C', // darkBg
+          color: '#FBBF24', // highlightYellow
+          fontFamily: 'Poppins, sans-serif',
+          minHeight: '100vh',
+          margin: 0,
+        }}
+      >
         <Navbar />
         <main>{children}</main>
       </body>

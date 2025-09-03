@@ -4,20 +4,57 @@ import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 
 export default function Footer() {
   return (
-    <footer className="bg-primaryPurple text-white py-12 px-6 text-center font-semibold">
+    <footer
+      style={{
+        backgroundColor: '#6B21A8', // primaryPurple
+        color: 'white',
+        padding: '3rem 1.5rem',
+        textAlign: 'center',
+        fontWeight: 600,
+      }}
+    >
       {/* Big faded title */}
-      <h1 className="text-4xl md:text-6xl font-extrabold opacity-20 mb-8">
+      <h1
+        style={{
+          fontSize: '2.25rem', // text-4xl
+          fontWeight: 800,
+          opacity: 0.2,
+          marginBottom: '2rem',
+        }}
+      >
         THE GLORIOUS CHURCH
       </h1>
 
       {/* Info sections */}
-      <div className="flex flex-col md:flex-row justify-center gap-12 md:gap-20 text-sm font-normal">
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '3rem',
+          justifyContent: 'center',
+          fontSize: '0.875rem',
+          fontWeight: 400,
+        }}
+      >
         {/* Location */}
         <div>
-          <p className="font-bold uppercase tracking-wide">OUR LOCATION</p>
+          <p
+            style={{
+              fontWeight: 700,
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em',
+            }}
+          >
+            OUR LOCATION
+          </p>
           <a
             href={footerData.location.url}
-            className="text-highlightYellow underline mt-1 block"
+            style={{
+              color: '#FFD700', // highlightYellow
+              textDecoration: 'underline',
+              marginTop: '0.25rem',
+              display: 'block',
+            }}
           >
             {footerData.location.address}
           </a>
@@ -25,20 +62,44 @@ export default function Footer() {
 
         {/* Contact */}
         <div>
-          <p className="font-bold uppercase tracking-wide">GET IN TOUCH</p>
-          <p className="mt-1">{footerData.contact.email}</p>
+          <p
+            style={{
+              fontWeight: 700,
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em',
+            }}
+          >
+            GET IN TOUCH
+          </p>
+          <p style={{ marginTop: '0.25rem' }}>{footerData.contact.email}</p>
         </div>
 
         {/* Socials */}
         <div>
-          <p className="font-bold uppercase tracking-wide">FOLLOW US</p>
-          <div className="flex gap-6 justify-center mt-2 text-lg">
+          <p
+            style={{
+              fontWeight: 700,
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em',
+            }}
+          >
+            FOLLOW US
+          </p>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '1.5rem',
+              marginTop: '0.5rem',
+              fontSize: '1.125rem',
+            }}
+          >
             {footerData.socials.instagram && (
               <a
                 href={footerData.socials.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-highlightYellow transition-colors"
+                style={{ color: 'white' }}
               >
                 <FaInstagram size={20} />
               </a>
@@ -48,7 +109,7 @@ export default function Footer() {
                 href={footerData.socials.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-highlightYellow transition-colors"
+                style={{ color: 'white' }}
               >
                 <FaTwitter size={20} />
               </a>
@@ -58,7 +119,7 @@ export default function Footer() {
                 href={footerData.socials.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-highlightYellow transition-colors"
+                style={{ color: 'white' }}
               >
                 <FaYoutube size={20} />
               </a>
@@ -68,7 +129,13 @@ export default function Footer() {
       </div>
 
       {/* Copyright */}
-      <p className="mt-10 text-xs text-gray-300">
+      <p
+        style={{
+          marginTop: '2.5rem',
+          fontSize: '0.75rem',
+          color: '#D1D5DB', // gray-300
+        }}
+      >
         © 2025 Christ Embassy Royalties Youth. All Rights Reserved.
       </p>
     </footer>

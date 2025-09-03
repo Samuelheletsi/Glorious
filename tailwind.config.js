@@ -20,5 +20,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [], // you can add plugins here later
 };

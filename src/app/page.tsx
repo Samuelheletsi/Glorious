@@ -13,9 +13,16 @@ import ScriptureChallenge from '@/components/ScriptureChallenge';
 import Branches from '@/components/Branches';
 import Footer from '@/components/Footer';
 
-export default function page() {
+export default function Page() {
   return (
-    <main className="flex flex-col pt-20">
+    <main
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        paddingTop: '5rem', // equivalent of pt-20
+        margin: 0,
+      }}
+    >
       <Hero />
       <PastorSection data={pastorData} />
       <WordOfTheMonth />

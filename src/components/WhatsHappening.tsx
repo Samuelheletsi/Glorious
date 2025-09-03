@@ -7,23 +7,99 @@ export default function WhatsHappening() {
   const { ref, inView } = useInView({ triggerOnce: false });
 
   return (
-    <section ref={ref} className="px-6 py-20 bg-white">
-      <h2 className="text-4xl font-bold text-center mb-4">What’s Happening</h2>
-      <p className="text-gray-500 text-center mb-12">Key activities for the week or month</p>
+    <section
+      ref={ref}
+      style={{ padding: '5rem 1.5rem', backgroundColor: '#fff' }}
+    >
+      <h2
+        style={{
+          fontSize: '2.5rem',
+          fontWeight: '700',
+          textAlign: 'center',
+          marginBottom: '1rem',
+        }}
+      >
+        What’s Happening
+      </h2>
+      <p
+        style={{
+          color: '#6b7280',
+          textAlign: 'center',
+          marginBottom: '3rem',
+          fontSize: '1rem',
+        }}
+      >
+        Key activities for the week or month
+      </p>
 
-      <div className="flex flex-col md:flex-row gap-6 justify-center">
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1.5rem',
+          justifyContent: 'center',
+        }}
+      >
         {mandates.map((m) => (
           <motion.div
             key={m.id}
             initial={{ opacity: 0, y: 50 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="bg-white rounded-xl shadow p-6 flex-1"
+            style={{
+              backgroundColor: '#fff',
+              borderRadius: '1rem',
+              boxShadow: '0 10px 25px rgba(0,0,0,0.1)',
+              padding: '1.5rem',
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+            }}
           >
-            <img src={m.image} alt={m.title} className="rounded-xl mb-4 w-full h-48 object-cover" />
-            <h3 className="text-xl font-bold text-black">{m.title}</h3>
-            <p className="text-gray-700 mt-2">{m.description}</p>
-            <button className="bg-purple-700 text-white px-4 py-2 mt-4 rounded hover:underline">
+            <img
+              src={m.image}
+              alt={m.title}
+              style={{
+                borderRadius: '1rem',
+                marginBottom: '1rem',
+                width: '100%',
+                height: '192px',
+                objectFit: 'cover',
+              }}
+            />
+            <h3
+              style={{
+                fontSize: '1.25rem',
+                fontWeight: '700',
+                color: '#000',
+                marginBottom: '0.5rem',
+              }}
+            >
+              {m.title}
+            </h3>
+            <p
+              style={{
+                color: '#374151',
+                marginBottom: '1rem',
+                fontSize: '1rem',
+              }}
+            >
+              {m.description}
+            </p>
+            <button
+              style={{
+                backgroundColor: '#6b21a8',
+                color: '#fff',
+                padding: '0.5rem 1rem',
+                borderRadius: '0.5rem',
+                fontWeight: '600',
+                cursor: 'pointer',
+                border: 'none',
+                transition: 'all 0.3s',
+              }}
+              onMouseOver={(e) => (e.currentTarget.style.textDecoration = 'underline')}
+              onMouseOut={(e) => (e.currentTarget.style.textDecoration = 'none')}
+            >
               Be Involved
             </button>
           </motion.div>

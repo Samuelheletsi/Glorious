@@ -98,7 +98,7 @@ export default function ScriptureChallenge() {
       }
     });
 
-    setFeedback(anyNew ? 'Correct!' : '');
+    setFeedback(anyNew ? '✅ Correct!' : '');
   };
 
   useEffect(() => {
@@ -114,26 +114,48 @@ export default function ScriptureChallenge() {
   const allFound = foundWords.length === solution.length;
 
   return (
-    <section className="px-4 py-12 md:py-20 bg-white dark:bg-[#0b1a33]">
-      <h2 className="text-4xl font-bold text-center text-purple-700 dark:text-yellow-400 mb-4">
+    <section style={{ padding: '3rem 1rem', backgroundColor: '#fff' }}>
+      {/* Title */}
+      <h2
+        style={{
+          fontSize: '2rem',
+          fontWeight: 'bold',
+          textAlign: 'center',
+          color: '#6b21a8',
+          marginBottom: '0.5rem',
+        }}
+      >
         {scriptureData.title}
       </h2>
-      <p className="text-gray-500 dark:text-gray-300 text-center mb-6">
+      <p
+        style={{
+          textAlign: 'center',
+          color: '#6b7280',
+          marginBottom: '1.5rem',
+        }}
+      >
         {scriptureData.subtitle}
       </p>
 
       {/* Progress */}
-      <div className="text-center mb-6">
-        <span className="font-semibold text-lg text-purple-600 dark:text-yellow-300">
+      <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+        <span style={{ fontWeight: 600, fontSize: '1.125rem', color: '#9333ea' }}>
           Progress: {foundWords.length}/{solution.length}
         </span>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-6 justify-center items-start">
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1.5rem',
+          alignItems: 'center',
+        }}
+      >
         {/* Puzzle Grid */}
-        <div className="flex-1 overflow-auto select-none">
+        <div style={{ overflowX: 'auto' }}>
           {scriptureData.grid.map((row, i) => (
-            <div key={i} className="flex gap-1 justify-center">
+            <div key={i} style={{ display: 'flex', gap: '4px', justifyContent: 'center' }}>
               {row.map((cell, j) => {
                 const isFound = foundWords.some((word) =>
                   solution.some((s) =>
@@ -141,14 +163,12 @@ export default function ScriptureChallenge() {
                       ? [...Array(s.word.length).keys()].some((k) => {
                           let r = s.row;
                           let c = s.col;
-
                           if (s.direction === 'horizontal') c += k;
                           if (s.direction === 'vertical') r += k;
                           if (s.direction === 'diagonal') {
                             r += k;
                             c += k;
                           }
-
                           return i === r && j === c;
                         })
                       : false
@@ -159,11 +179,25 @@ export default function ScriptureChallenge() {
                   <div
                     key={j}
                     onClick={() => toggleCell(i, j)}
-                    className={`w-10 h-10 md:w-12 md:h-12 border border-purple-400 flex items-center justify-center font-bold cursor-pointer
-                      ${cell === '' ? 'bg-gray-100 cursor-default' : ''}
-                      ${selected[i][j] && !isFound ? 'bg-purple-200 text-purple-900' : ''}
-                      ${isFound ? 'bg-green-300 text-green-900 font-bold' : ''}
-                      transition`}
+                    style={{
+                      width: '2.5rem',
+                      height: '2.5rem',
+                      border: '1px solid #9333ea',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontWeight: 'bold',
+                      cursor: cell ? 'pointer' : 'default',
+                      backgroundColor: !cell
+                        ? '#f3f4f6'
+                        : isFound
+                        ? '#86efac'
+                        : selected[i][j]
+                        ? '#ddd6fe'
+                        : '#fff',
+                      color: isFound ? '#166534' : selected[i][j] ? '#4c1d95' : '#000',
+                      transition: 'all 0.3s ease',
+                    }}
                   >
                     {cell}
                   </div>
@@ -174,16 +208,28 @@ export default function ScriptureChallenge() {
         </div>
 
         {/* Clues */}
-        <div className="flex-1 grid grid-cols-2 md:grid-cols-3 gap-2 max-h-[400px] overflow-y-auto">
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))',
+            gap: '0.5rem',
+            maxHeight: '400px',
+            overflowY: 'auto',
+            width: '100%',
+          }}
+        >
           {scriptureData.clues.map((clue, i) => (
             <p
               key={i}
-              className={`text-purple-700 dark:text-yellow-400 bg-purple-50 dark:bg-[#1a1a2e] p-2 rounded shadow-sm hover:bg-purple-100 transition
-                ${
-                  foundWords.includes(clue.toUpperCase())
-                    ? 'line-through text-green-700'
-                    : ''
-                }`}
+              style={{
+                color: foundWords.includes(clue.toUpperCase()) ? '#15803d' : '#6b21a8',
+                textDecoration: foundWords.includes(clue.toUpperCase()) ? 'line-through' : 'none',
+                backgroundColor: '#faf5ff',
+                padding: '0.5rem',
+                borderRadius: '0.375rem',
+                fontSize: '0.875rem',
+                fontWeight: 500,
+              }}
             >
               {clue}
             </p>
@@ -193,23 +239,55 @@ export default function ScriptureChallenge() {
 
       {/* Feedback */}
       {feedback && (
-        <p className="text-center mt-4 font-semibold text-lg text-green-700 dark:text-green-400">
+        <p
+          style={{
+            textAlign: 'center',
+            marginTop: '1rem',
+            fontWeight: 600,
+            fontSize: '1.125rem',
+            color: '#15803d',
+          }}
+        >
           {feedback}
         </p>
       )}
 
-      {/* Reset & Win Message */}
-      <div className="text-center mt-6">
+      {/* Restart */}
+      <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
         <button
           onClick={resetGame}
-          className="px-6 py-2 bg-purple-600 text-white rounded-lg shadow hover:bg-purple-700 transition"
+          style={{
+            padding: '0.5rem 1.5rem',
+            backgroundColor: '#9333ea',
+            color: '#fff',
+            borderRadius: '0.5rem',
+            border: 'none',
+            cursor: 'pointer',
+            fontWeight: '600',
+            transition: 'background 0.3s',
+          }}
+          onMouseOver={(e) =>
+            (e.currentTarget.style.backgroundColor = '#7e22ce')
+          }
+          onMouseOut={(e) =>
+            (e.currentTarget.style.backgroundColor = '#9333ea')
+          }
         >
           Restart Game
         </button>
       </div>
 
+      {/* Victory */}
       {allFound && (
-        <p className="text-center mt-6 text-2xl font-bold text-green-600">
+        <p
+          style={{
+            textAlign: 'center',
+            marginTop: '1.5rem',
+            fontSize: '1.5rem',
+            fontWeight: 'bold',
+            color: '#16a34a',
+          }}
+        >
           🎉 Congratulations! You found all the words!
         </p>
       )}
