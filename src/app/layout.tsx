@@ -4,6 +4,9 @@ import Navbar from '@/components/Navbar';
 export const metadata = {
   title: 'Royalties Youth Church',
   description: 'Official site of Christ Embassy – Royalties Youth Church',
+  icons: {
+    icon: '/images/hryc.png',  // <--- this sets the favicon
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
