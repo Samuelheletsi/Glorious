@@ -38,7 +38,6 @@ export default function Branches() {
             style={{
               width: '22rem',
               backgroundColor: '#fff',
-              boxShadow: '0 10px 15px rgba(0,0,0,0.1)',
               borderRadius: '1rem',
               padding: '1rem',
               display: 'flex',
@@ -46,6 +45,19 @@ export default function Branches() {
              
             }}
           >
+            <hr
+            style={{
+              width: '100%',               // make it span the card
+              border: 'none',              // remove default border
+              height: '1px',               // thickness
+              backgroundColor: 'lightgray',  // color of the line
+              borderRadius: '2px',         // optional rounded edges
+              marginBottom: '1rem',        // spacing below the line
+            }}
+          />
+
+
+
             <h3 style={{ fontSize: '1.25rem', fontWeight: 600 }}>
               {branch.name}
             </h3>
