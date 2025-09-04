@@ -11,7 +11,6 @@ type SolutionWord = {
   direction: Direction;
 };
 
-// Full solution (must match scripture.json grid)
 const solution: SolutionWord[] = [
   { word: 'ANOINTING', row: 0, col: 0, direction: 'horizontal' },
   { word: 'BIBLE', row: 1, col: 1, direction: 'horizontal' },
@@ -54,7 +53,6 @@ export default function ScriptureChallenge() {
   const [foundWords, setFoundWords] = useState<string[]>([]);
   const [feedback, setFeedback] = useState<string>('');
 
-  // Toggle selected cells
   const toggleCell = (rowIdx: number, colIdx: number) => {
     if (!scriptureData.grid[rowIdx][colIdx]) return;
     setSelected((prev) =>
@@ -64,24 +62,19 @@ export default function ScriptureChallenge() {
     );
   };
 
-  // Check if selected cells match any solution word
-  const checkSolution = () => {
+  useEffect(() => {
     let anyNew = false;
-
     solution.forEach(({ word, row, col, direction }) => {
       let correct = true;
-
       for (let i = 0; i < word.length; i++) {
         let r = row;
         let c = col;
-
         if (direction === 'horizontal') c += i;
         if (direction === 'vertical') r += i;
         if (direction === 'diagonal') {
           r += i;
           c += i;
         }
-
         if (
           r >= selected.length ||
           c >= selected[0].length ||
@@ -91,43 +84,13 @@ export default function ScriptureChallenge() {
           break;
         }
       }
-
       if (correct && !foundWords.includes(word)) {
         setFoundWords((prev) => [...prev, word]);
         anyNew = true;
       }
     });
-
     setFeedback(anyNew ? '✅ Correct!' : '');
-  };
-
- useEffect(() => {
-  const checkSolution = () => {
-    let anyNew = false;
-    solution.forEach(({ word, row, col, direction }) => {
-      let correct = true;
-      for (let i = 0; i < word.length; i++) {
-        let r = row;
-        let c = col;
-        if (direction === 'horizontal') c += i;
-        if (direction === 'vertical') r += i;
-        if (direction === 'diagonal') { r += i; c += i; }
-        if (r >= selected.length || c >= selected[0].length || !selected[r][c]) {
-          correct = false;
-          break;
-        }
-      }
-      if (correct && !foundWords.includes(word)) {
-        setFoundWords(prev => [...prev, word]);
-        anyNew = true;
-      }
-    });
-    setFeedback(anyNew ? 'Correct!' : '');
-  };
-
-  checkSolution();
-}, [selected, foundWords]);
-
+  }, [selected, foundWords]);
 
   const resetGame = () => {
     setSelected(scriptureData.grid.map((row) => row.map(() => false)));
@@ -138,14 +101,13 @@ export default function ScriptureChallenge() {
   const allFound = foundWords.length === solution.length;
 
   return (
-    <section style={{ padding: '3rem 1rem', backgroundColor: '#fff' }}>
-      {/* Title */}
+    <section style={{ padding: '2rem 1rem', backgroundColor: 'white' }}>
       <h2
         style={{
-          fontSize: '2rem',
-          fontWeight: 'bold',
           textAlign: 'center',
-          color: '#6b21a8',
+          color: '#6B21A8',
+          fontWeight: 'bold',
+          fontSize: '1.75rem',
           marginBottom: '0.5rem',
         }}
       >
@@ -154,162 +116,165 @@ export default function ScriptureChallenge() {
       <p
         style={{
           textAlign: 'center',
-          color: '#6b7280',
+          color: '#6B7280',
           marginBottom: '1.5rem',
+          fontSize: '0.9rem',
         }}
       >
         {scriptureData.subtitle}
       </p>
 
-      {/* Progress */}
       <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
-        <span style={{ fontWeight: 600, fontSize: '1.125rem', color: '#9333ea' }}>
+        <span
+          style={{
+            fontWeight: '600',
+            color: '#6B21A8',
+            fontSize: '1rem',
+          }}
+        >
           Progress: {foundWords.length}/{solution.length}
         </span>
       </div>
 
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '1.5rem',
-          alignItems: 'center',
-        }}
-      >
-        {/* Puzzle Grid */}
-        <div style={{ overflowX: 'auto' }}>
-          {scriptureData.grid.map((row, i) => (
-            <div key={i} style={{ display: 'flex', gap: '4px', justifyContent: 'center' }}>
-              {row.map((cell, j) => {
-                const isFound = foundWords.some((word) =>
-                  solution.some((s) =>
-                    s.word === word
-                      ? [...Array(s.word.length).keys()].some((k) => {
-                          let r = s.row;
-                          let c = s.col;
-                          if (s.direction === 'horizontal') c += k;
-                          if (s.direction === 'vertical') r += k;
-                          if (s.direction === 'diagonal') {
-                            r += k;
-                            c += k;
-                          }
-                          return i === r && j === c;
-                        })
-                      : false
-                  )
-                );
+      {/* Grid */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+        {scriptureData.grid.map((row, i) => (
+          <div
+            key={i}
+            style={{ display: 'flex', gap: '4px', justifyContent: 'center' }}
+          >
+            {row.map((cell, j) => {
+              const isFound = foundWords.some((word) =>
+                solution.some((s) =>
+                  s.word === word
+                    ? [...Array(s.word.length).keys()].some((k) => {
+                        let r = s.row;
+                        let c = s.col;
+                        if (s.direction === 'horizontal') c += k;
+                        if (s.direction === 'vertical') r += k;
+                        if (s.direction === 'diagonal') {
+                          r += k;
+                          c += k;
+                        }
+                        return i === r && j === c;
+                      })
+                    : false
+                )
+              );
 
-                return (
-                  <div
-                    key={j}
-                    onClick={() => toggleCell(i, j)}
-                    style={{
-                      width: '2.5rem',
-                      height: '2.5rem',
-                      border: '1px solid #9333ea',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontWeight: 'bold',
-                      cursor: cell ? 'pointer' : 'default',
-                      backgroundColor: !cell
-                        ? '#f3f4f6'
-                        : isFound
-                        ? '#86efac'
-                        : selected[i][j]
-                        ? '#ddd6fe'
-                        : '#fff',
-                      color: isFound ? '#166534' : selected[i][j] ? '#4c1d95' : '#000',
-                      transition: 'all 0.3s ease',
-                    }}
-                  >
-                    {cell}
-                  </div>
-                );
-              })}
-            </div>
-          ))}
-        </div>
-
-        {/* Clues */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))',
-            gap: '0.5rem',
-            maxHeight: '400px',
-            overflowY: 'auto',
-            width: '100%',
-          }}
-        >
-          {scriptureData.clues.map((clue, i) => (
-            <p
-              key={i}
-              style={{
-                color: foundWords.includes(clue.toUpperCase()) ? '#15803d' : '#6b21a8',
-                textDecoration: foundWords.includes(clue.toUpperCase()) ? 'line-through' : 'none',
-                backgroundColor: '#faf5ff',
-                padding: '0.5rem',
-                borderRadius: '0.375rem',
-                fontSize: '0.875rem',
-                fontWeight: 500,
-              }}
-            >
-              {clue}
-            </p>
-          ))}
-        </div>
+              return (
+                <div
+                  key={j}
+                  onClick={() => toggleCell(i, j)}
+                  style={{
+                    width: '2rem',
+                    height: '2rem',
+                    border: '1px solid #6B21A8',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontWeight: 'bold',
+                    cursor: cell ? 'pointer' : 'default',
+                    fontSize: '0.9rem',
+                    backgroundColor: !cell
+                      ? '#F3F4F6'
+                      : isFound
+                      ? '#BBF7D0'
+                      : selected[i][j]
+                      ? '#E9D5FF'
+                      : '#FFFFFF',
+                    color: !cell
+                      ? '#9CA3AF'
+                      : isFound
+                      ? '#166534'
+                      : selected[i][j]
+                      ? '#6B21A8'
+                      : '#000000',
+                    transition: 'all 0.2s ease',
+                  }}
+                >
+                  {cell}
+                </div>
+              );
+            })}
+          </div>
+        ))}
       </div>
 
-      {/* Feedback */}
+      {/* Clues */}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit,minmax(120px,1fr))',
+          gap: '8px',
+          marginTop: '1.5rem',
+          maxHeight: '400px',
+          overflowY: 'auto',
+        }}
+      >
+        {scriptureData.clues.map((clue, i) => (
+          <p
+            key={i}
+            style={{
+              padding: '0.5rem',
+              borderRadius: '6px',
+              textAlign: 'center',
+              fontWeight: '500',
+              fontSize: '0.9rem',
+              backgroundColor: foundWords.includes(clue.toUpperCase())
+                ? '#ECFDF5'
+                : '#F3E8FF',
+              color: foundWords.includes(clue.toUpperCase())
+                ? '#15803D'
+                : '#6B21A8',
+              textDecoration: foundWords.includes(clue.toUpperCase())
+                ? 'line-through'
+                : 'none',
+            }}
+          >
+            {clue}
+          </p>
+        ))}
+      </div>
+
       {feedback && (
         <p
           style={{
             textAlign: 'center',
             marginTop: '1rem',
-            fontWeight: 600,
-            fontSize: '1.125rem',
-            color: '#15803d',
+            fontWeight: '600',
+            color: '#15803D',
+            fontSize: '1.1rem',
           }}
         >
           {feedback}
         </p>
       )}
 
-      {/* Restart */}
       <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
         <button
           onClick={resetGame}
           style={{
-            padding: '0.5rem 1.5rem',
-            backgroundColor: '#9333ea',
-            color: '#fff',
-            borderRadius: '0.5rem',
-            border: 'none',
-            cursor: 'pointer',
+            padding: '0.6rem 1.2rem',
+            backgroundColor: '#6B21A8',
+            color: 'white',
             fontWeight: '600',
-            transition: 'background 0.3s',
+            borderRadius: '6px',
+            cursor: 'pointer',
           }}
-          onMouseOver={(e) =>
-            (e.currentTarget.style.backgroundColor = '#7e22ce')
-          }
-          onMouseOut={(e) =>
-            (e.currentTarget.style.backgroundColor = '#9333ea')
-          }
         >
           Restart Game
         </button>
       </div>
 
-      {/* Victory */}
       {allFound && (
         <p
           style={{
             textAlign: 'center',
             marginTop: '1.5rem',
-            fontSize: '1.5rem',
             fontWeight: 'bold',
-            color: '#16a34a',
+            color: '#15803D',
+            fontSize: '1.25rem',
           }}
         >
           🎉 Congratulations! You found all the words!
