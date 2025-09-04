@@ -48,7 +48,7 @@ export default function Navbar() {
     >
       {/* Logo */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-        <img src="/logo.svg" alt="RYC Logo" style={{ width: '2.5rem', height: '2.5rem' }} />
+        <img src="/images/hryc.png" alt="RYC Logo" style={{ width: '2.5rem', height: '2.5rem' }} />
         <div style={{ color: '#fff', fontWeight: 700 }}>
           <p style={{ fontSize: '1.25rem', fontWeight: 800, margin: 0 }}>Royalties</p>
           <p style={{ fontSize: '0.75rem', textTransform: 'uppercase', margin: 0 }}>
