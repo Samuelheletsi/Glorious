@@ -8,7 +8,7 @@ export default function Footer() {
       style={{
         backgroundColor: '#6B21A8', // primaryPurple
         color: 'white',
-        padding: '3rem 1.5rem',
+        padding: '1rem ',
         textAlign: 'center',
         fontWeight: 600,
       }}
@@ -16,7 +16,7 @@ export default function Footer() {
       {/* Big faded title */}
       <h1
         style={{
-          fontSize: '2.25rem', // text-4xl
+          fontSize: '4.25rem', // text-4xl
           fontWeight: 800,
           opacity: 0.2,
           marginBottom: '2rem',
@@ -29,7 +29,7 @@ export default function Footer() {
       <div
         style={{
           display: 'flex',
-          flexDirection: 'column',
+          flexWrap: 'wrap',
           gap: '3rem',
           justifyContent: 'center',
           fontSize: '0.875rem',
