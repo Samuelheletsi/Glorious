@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import mandates from '@/data/mandates.json';
+import Image from 'next/image';
 
 export default function WhatsHappening() {
   const { ref, inView } = useInView({ triggerOnce: false });
@@ -56,17 +57,13 @@ export default function WhatsHappening() {
               flexDirection: 'column',
             }}
           >
-            <img
-              src={m.image}
-              alt={m.title}
-              style={{
-                borderRadius: '1rem',
-                marginBottom: '1rem',
-                width: '100%',
-                height: '192px',
-                objectFit: 'cover',
-              }}
-            />
+            <Image
+  src={m.image}
+  alt={m.title}
+  width={400} // adjust
+  height={208} // adjust
+  className="rounded-xl mb-4 w-full object-cover"
+/>
             <h3
               style={{
                 fontSize: '1.25rem',

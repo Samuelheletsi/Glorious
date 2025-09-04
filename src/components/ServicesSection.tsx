@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 interface Service {
   id: string;
@@ -54,11 +55,14 @@ export default function ServicesSection() {
               overflow: 'hidden',
             }}
           >
-            <img
-              src={service.image}
-              alt={service.title}
-              style={{ width: '100%', height: '208px', objectFit: 'cover' }}
-            />
+            <Image
+  src={service.image}
+  alt={service.title}
+  width={400} // adjust
+  height={208} // adjust
+  className="rounded-t-xl object-cover w-full h-52"
+/>
+
             <div style={{ padding: '1.5rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
               <h3 style={{ marginTop: '1rem', fontSize: '1.25rem', fontWeight: '600' }}>
                 {service.title}

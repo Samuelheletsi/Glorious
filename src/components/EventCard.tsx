@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { Event } from '@/types';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function EventCard({ event }: { event: Event }) {
   return (
@@ -10,62 +11,24 @@ export default function EventCard({ event }: { event: Event }) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: false }}
-      style={{
-        boxShadow: '0 10px 15px rgba(0,0,0,0.1)',
-        borderRadius: '1rem',
-        padding: '1.25rem',
-        backgroundColor: '#fff',
-        textAlign: 'left',
-        display: 'flex',
-        flexDirection: 'column',
-      }}
+      className="shadow-lg rounded-2xl p-5 bg-white text-left flex flex-col"
     >
-      <img
+      <Image
         src={event.images[0]}
         alt={event.title}
-        style={{
-          borderRadius: '0.75rem',
-          width: '100%',
-          marginBottom: '1rem',
-        }}
+        width={400} // adjust as needed
+        height={250} // adjust as needed
+        className="rounded-xl w-full mb-4 object-cover"
       />
-      <h3 style={{ fontSize: '1.25rem', fontWeight: 600 }}>
-        {event.title}
-      </h3>
+      <h3 className="text-xl font-semibold">{event.title}</h3>
       <Link
         href="#"
-        style={{
-          color: '#3b3395', // primaryPurple
-          fontWeight: '700',
-          display: 'block',
-          marginTop: '0.5rem',
-          textDecoration: 'none',
-        }}
-        onMouseEnter={(e) => (e.currentTarget.style.textDecoration = 'underline')}
-        onMouseLeave={(e) => (e.currentTarget.style.textDecoration = 'none')}
+        className="text-primaryPurple font-bold block mt-2 hover:underline"
       >
         {event.description}
       </Link>
-      <p style={{ marginTop: '0.5rem', color: '#4B5563' /* gray-600 */ }}>
-        {event.date}
-      </p>
-      <button
-        style={{
-          marginTop: '1rem',
-          backgroundColor: '#3b3395',
-          color: '#fff',
-          padding: '0.75rem 1.25rem',
-          borderRadius: '0.75rem',
-          fontWeight: 600,
-          border: 'none',
-          cursor: 'pointer',
-          transition: 'background 0.3s ease',
-        }}
-        onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#292471')}
-        onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#3b3395')}
-      >
-        Be Involved
-      </button>
+      <p className="mt-2 text-gray-600">{event.date}</p>
+      <button className="btn btn-purple mt-4">Be Involved</button>
     </motion.div>
   );
 }

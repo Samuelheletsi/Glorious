@@ -101,9 +101,33 @@ export default function ScriptureChallenge() {
     setFeedback(anyNew ? '✅ Correct!' : '');
   };
 
-  useEffect(() => {
-    checkSolution();
-  }, [selected]);
+ useEffect(() => {
+  const checkSolution = () => {
+    let anyNew = false;
+    solution.forEach(({ word, row, col, direction }) => {
+      let correct = true;
+      for (let i = 0; i < word.length; i++) {
+        let r = row;
+        let c = col;
+        if (direction === 'horizontal') c += i;
+        if (direction === 'vertical') r += i;
+        if (direction === 'diagonal') { r += i; c += i; }
+        if (r >= selected.length || c >= selected[0].length || !selected[r][c]) {
+          correct = false;
+          break;
+        }
+      }
+      if (correct && !foundWords.includes(word)) {
+        setFoundWords(prev => [...prev, word]);
+        anyNew = true;
+      }
+    });
+    setFeedback(anyNew ? 'Correct!' : '');
+  };
+
+  checkSolution();
+}, [selected, foundWords]);
+
 
   const resetGame = () => {
     setSelected(scriptureData.grid.map((row) => row.map(() => false)));

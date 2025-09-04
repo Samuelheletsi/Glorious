@@ -56,7 +56,7 @@ export default function GetInTouch() {
         Get in Touch
       </h1>
       <p style={{ textAlign: 'center', color: '#4B5563', marginBottom: '3rem' }}>
-        We'd love to hear from you! Fill out the form below or reach us via email or phone.
+        We&apos;d love to hear from you! Fill out the form below or reach us via email or phone.
       </p>
 
       <div
