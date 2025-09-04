@@ -58,12 +58,12 @@ export default function WhatsHappening() {
             }}
           >
             <Image
-  src={m.image}
-  alt={m.title}
-  width={400} // adjust
-  height={208} // adjust
-  className="rounded-xl mb-4 w-full object-cover"
-/>
+              src={m.image}
+              alt={m.title}
+              width={350} // adjust
+              height={208} // adjust
+              className="rounded-xl mb-4 w-full object-cover"
+            />
             <h3
               style={{
                 fontSize: '1.25rem',
