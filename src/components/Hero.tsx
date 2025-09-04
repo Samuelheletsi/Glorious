@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import meta from '@/data/meta.json';
+import { url } from 'inspector';
 
 export default function Hero() {
   return (
@@ -12,7 +13,7 @@ export default function Hero() {
         justifyContent: 'center',
         alignItems: 'center',
         textAlign: 'center',
-        backgroundColor: '#6B21A8', // primaryPurple
+        backgroundImage: url("/images/"), // primaryPurple
         color: 'white',
         padding: '0 1.5rem',
       }}

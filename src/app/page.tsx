@@ -20,7 +20,7 @@ export default function Page() {
         
         display: 'flex',
         flexDirection: 'column',
-        paddingTop: '5rem', // equivalent of pt-20
+        paddingTop: '0', // equivalent of pt-20
         margin: 0,
       }}
     >
