@@ -14,18 +14,20 @@ export default function MissionVision() {
         padding: '4rem 1.5rem',
         textAlign: 'center',
         color: '#3b3395',
+         borderRadius: '30px 30px 0 0'
       }}
     >
       {/* Heading */}
       <h2
         style={{
           fontSize: '1.875rem', // ~text-3xl
-          fontWeight: 700,
+          fontWeight: 700
+          
         }}
       >
         {missionVision.heading}
       </h2>
-      <p style={{ marginTop: '0.5rem', fontWeight: 500 }}>
+      <p style={{ marginTop: '0', fontWeight: 500, color: '#333' }}>
         {missionVision.subtext}
       </p>
 
@@ -34,7 +36,7 @@ export default function MissionVision() {
         style={{
           marginTop: '2.5rem',
           display: 'flex',
-          flexDirection: 'column',
+          flexWrap: 'wrap',
           gap: '1.5rem',
           maxWidth: '64rem',
           marginLeft: 'auto',

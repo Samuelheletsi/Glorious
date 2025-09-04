@@ -12,57 +12,125 @@ export default function LivesTransformed() {
       ref={ref}
       id="testimonies"
       style={{
-        padding: '5rem 1.5rem',
-        backgroundColor: '#f9fafb', // gray-50
+        padding: '4rem 1rem',
+        margin: '0 auto',
       }}
     >
-      <h2
-        style={{
-          fontSize: '2.25rem', // ~text-4xl
-          fontWeight: 700,
-          textAlign: 'center',
-          marginBottom: '1rem',
-        }}
-      >
-        Lives Transformed
-      </h2>
-      <p
-        style={{
-          color: '#6b7280', // gray-500
-          textAlign: 'center',
-          marginBottom: '3rem',
-        }}
-      >
-        Real stories of faith and healing
-      </p>
+      {/* Heading */}
+      <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+        <h2
+          style={{
+            fontSize: '2.25rem',
+            fontWeight: 700,
+            marginBottom: '0.5rem',
+          }}
+        >
+          Lives Transformed
+        </h2>
+        <p
+          style={{
+            color: '#6b7280',
+            fontSize: '1.125rem',
+          }}
+        >
+          Real stories of faith and healing
+        </p>
+      </div>
 
+      {/* Responsive cards */}
       <div
         style={{
           display: 'flex',
-          flexDirection: 'column',
-          gap: '1.5rem',
+          flexDirection:'column',
+          gap: '2rem',
           justifyContent: 'center',
         }}
       >
         {testimonies.map((t, i) => (
-  <motion.div
-    key={i}
-    initial={{ opacity: 0, y: 50 }}
-    animate={inView ? { opacity: 1, y: 0 } : {}}
-    transition={{ duration: 0.8 }}
-    className="bg-white rounded-xl shadow p-6 flex-1 flex flex-col items-center"
-  >
-    <Image
-      src={t.image}
-      alt={t.text}
-      width={300} // adjust
-      height={256} // adjust
-      className="rounded-xl border-4 border-purple-700 mb-4 object-cover"
-    />
-    <p className="text-gray-700 text-center">{t.text}</p>
-  </motion.div>
-))}
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 50 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: i * 0.2, duration: 0.8 }}
+            className="card"
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '1.5rem',
+              maxWidth: '100%',
+              backgroundColor: '#fff',
+               
+              
+            }}
+            whileHover={{ y: -8 }} // card lift
+          >
+            <div
+            
+              style={{
+                width: '40rem',
+              }}>
+                   <p
+                      style={{
+                        color: '#374151',
+                        textAlign: 'center',
+                        fontSize: '1rem',
+                      }}
+                    >
+                      {t.text}
+                   </p>
+            </div>
+              
+            <div
+              className="image-wrapper"
+              style={{
+                width: '20rem',
+                height: '220px',
+                overflow: 'hidden',
+                borderRadius: '1rem',
+                border: '4px solid #6b21a8',
+                marginBottom: '1rem',
+              }}
+            >
+              <Image
+                src={t.image}
+                alt={t.text}
+                width={400}
+                height={220}
+                className="zoom-image"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  transition: 'transform 0.4s ease',
+                }}
+              />
+            </div>
+            
+          </motion.div>
+        ))}
       </div>
+
+      {/* Responsive + Hover styles */}
+      <style jsx>{`
+        .card:hover {
+          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        .card:hover .zoom-image {
+          transform: scale(1.08);
+        }
+        @media (min-width: 640px) {
+          .card {
+            flex: 1 1 calc(50% - 2rem);
+            max-width: calc(50% - 2rem);
+          }
+        }
+        @media (min-width: 1024px) {
+          .card {
+            flex: 1 1 calc(33.333% - 2rem);
+            max-width: calc(33.333% - 2rem);
+          }
+        }
+      `}</style>
     </section>
   );
 }

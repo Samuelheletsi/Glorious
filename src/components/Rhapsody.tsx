@@ -76,7 +76,7 @@ export default function Rhapsody() {
           style={{
             maxWidth: '36rem',
             margin: '0 auto',
-            fontSize: '1.125rem',
+            fontSize: '1.1rem',
             lineHeight: '1.75rem',
             color: '#e5e7eb',
           }}
