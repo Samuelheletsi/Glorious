@@ -55,6 +55,7 @@ export default function WordOfTheMonth() {
           style={{ display: 'flex', flexDirection: 'column', gap: '1rem', textAlign: 'left', maxWidth: '600px' }}
         >
           <p style={{ color: '#4b5563' }}>{metaData.wordOfTheMonth.description}</p>
+          <p style={{ color: '#4b5563' ,marginTop:'0.3rem'}}>{metaData.wordOfTheMonth.conclude}</p>
            
           <button
             style={{
