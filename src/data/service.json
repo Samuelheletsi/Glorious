@@ -1,26 +1,26 @@
 [
   {
     "id": "1",
-    "title": "Sunday Service",
-    "description": "Join us in person or online for a powerful worship experience.",
-    "date": "Every Sunday",
-    "location": "RYC Main Auditorium",
-    "image": "/images/service1.jpg"
-  },
-  {
-    "id": "2",
-    "title": "Youth Fellowship",
+    "title": "Jesus Alive Miracle Conference with Pastor Wisdom",
     "description": "Empowering youth to grow in faith and leadership.",
-    "date": "Every Friday",
-    "location": "RYC Youth Hall",
+    "date": "5TH SEPTEMBER 6PM",
+    "location": "RYC AUDITORIUM FORECOURT",
     "image": "/images/service2.jpg"
   },
   {
-    "id": "3",
-    "title": "Ladies Connect",
+    "id": "2",
+    "title": "Jesus Alive Miracle Conference with Pastor David",
     "description": "Special sessions for women to grow spiritually.",
-    "date": "Monthly",
-    "location": "RYC Conference Room",
+    "date": "6TH SEPTEMBER 6PM",
+    "location": "Avery Hills, Spintex",
+    "image": "/images/service3.jpg"
+  },
+  {
+    "id": "3",
+    "title": " Metanoia Ladies Conference",
+    "description": " A special ladies conference with our Man of God Pastor David",
+    "date": " 27TH SEPTEMBER 3PM",
+    "location": "WETLANDS DEPARTMENT,LEGON",
     "image": "/images/service3.jpg"
   }
 ]
