@@ -60,7 +60,7 @@ export default function WhatsHappening() {
             <Image
               src={m.image}
               alt={m.title}
-              width={350} // adjust
+              width={330} // adjust
               height={208} // adjust
               className="rounded-xl mb-4 w-full object-cover"
             />
