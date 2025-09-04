@@ -67,7 +67,7 @@ export default function LivesTransformed() {
             <div
             
               style={{
-                width: '40rem',
+                width: '20rem',
               }}>
                    <p
                       style={{

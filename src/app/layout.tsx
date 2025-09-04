@@ -11,15 +11,17 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <body
         style={{
-          backgroundColor: '#fffff', 
-          color: '#1a1a1a', //  
+          backgroundColor: '#ffffff', // fixed white
+          color: '#1a1a1a', // dark gray text
           fontFamily: 'Poppins, sans-serif',
           minHeight: '100vh',
           margin: 0,
+          display: 'flex',
+          flexDirection: 'column',
         }}
       >
         <Navbar />
-        <main>{children}</main>
+        <main style={{ flex: 1 }}>{children}</main>
       </body>
     </html>
   );

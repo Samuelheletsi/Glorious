@@ -75,11 +75,7 @@ export default function ScriptureChallenge() {
           r += i;
           c += i;
         }
-        if (
-          r >= selected.length ||
-          c >= selected[0].length ||
-          !selected[r][c]
-        ) {
+        if (r >= selected.length || c >= selected[0].length || !selected[r][c]) {
           correct = false;
           break;
         }
@@ -102,12 +98,13 @@ export default function ScriptureChallenge() {
 
   return (
     <section style={{ padding: '2rem 1rem', backgroundColor: 'white' }}>
+      {/* Title */}
       <h2
         style={{
           textAlign: 'center',
           color: '#6B21A8',
           fontWeight: 'bold',
-          fontSize: '1.75rem',
+          fontSize: '2rem',
           marginBottom: '0.5rem',
         }}
       >
@@ -116,14 +113,16 @@ export default function ScriptureChallenge() {
       <p
         style={{
           textAlign: 'center',
-          color: '#6B7280',
+          color: '#6B21A8',
           marginBottom: '1.5rem',
           fontSize: '0.9rem',
+          fontWeight: '600',
         }}
       >
         {scriptureData.subtitle}
       </p>
 
+      {/* Progress */}
       <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
         <span
           style={{
@@ -207,7 +206,7 @@ export default function ScriptureChallenge() {
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit,minmax(120px,1fr))',
           gap: '8px',
-          marginTop: '1.5rem',
+          marginTop: '1rem',
           maxHeight: '400px',
           overflowY: 'auto',
         }}
@@ -216,7 +215,7 @@ export default function ScriptureChallenge() {
           <p
             key={i}
             style={{
-              padding: '0.5rem',
+              padding: '0.3rem',
               borderRadius: '6px',
               textAlign: 'center',
               fontWeight: '500',
@@ -237,6 +236,7 @@ export default function ScriptureChallenge() {
         ))}
       </div>
 
+      {/* Feedback */}
       {feedback && (
         <p
           style={{
@@ -251,6 +251,7 @@ export default function ScriptureChallenge() {
         </p>
       )}
 
+      {/* Reset Button */}
       <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
         <button
           onClick={resetGame}
@@ -267,6 +268,7 @@ export default function ScriptureChallenge() {
         </button>
       </div>
 
+      {/* Congratulations */}
       {allFound && (
         <p
           style={{

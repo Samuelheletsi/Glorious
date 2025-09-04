@@ -25,24 +25,25 @@ export default function Branches() {
 
       <div
         style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
-          gap: '2rem',
-          marginTop: '2.5rem',
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '1.5rem',
+          justifyContent: 'center',
+           
         }}
       >
         {branches.map((branch) => (
           <div
             key={branch.id}
             style={{
+              width: '22rem',
               backgroundColor: '#fff',
               boxShadow: '0 10px 15px rgba(0,0,0,0.1)',
               borderRadius: '1rem',
-              padding: '1.5rem',
-              textAlign: 'center',
+              padding: '1rem',
               display: 'flex',
               flexDirection: 'column',
-              alignItems: 'center',
+             
             }}
           >
             <h3 style={{ fontSize: '1.25rem', fontWeight: 600 }}>
@@ -58,16 +59,22 @@ export default function Branches() {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  marginTop: '1rem',
-                  color: '#3b3395',
+                  width: 'fit-content',
+                  marginTop: '0.5rem',
+                  backgroundColor: '#3b3395',
+                  padding: '0.2rem',
+                  borderRadius: '90px',
+                  color: '#fff',
                   transition: 'color 0.3s ease',
                 }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = '#6B46C1') // lightPurple
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.color = '#3b3395')
-                }
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = 'black';// lightPurple
+                  e.currentTarget.style.backgroundColor = '#6B46C1' ;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#fff';
+                  e.currentTarget.style.backgroundColor = '#3b3395' 
+                }}
               >
                 <FaInstagram size={28} />
               </a>

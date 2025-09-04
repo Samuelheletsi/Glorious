@@ -12,6 +12,7 @@ import GetInTouch from '@/components/GetInTouch';
 import ScriptureChallenge from '@/components/ScriptureChallenge';
 import Branches from '@/components/Branches';
 import Footer from '@/components/Footer';
+import FindYourPlace from '@/components/FindYourPlace';
 
 export default function Page() {
   return (
@@ -32,6 +33,7 @@ export default function Page() {
       <Rhapsody />
       <WhatsHappening />
       <LivesTransformed />
+      <FindYourPlace />
       <GetInTouch />
       <ScriptureChallenge />
       <Branches />
