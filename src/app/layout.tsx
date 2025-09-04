@@ -11,7 +11,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <body
         style={{
-          backgroundColor: '#1C1C1C', // darkBg
+          backgroundColor: '#fffff', 
           color: '#FBBF24', // highlightYellow
           fontFamily: 'Poppins, sans-serif',
           minHeight: '100vh',

@@ -7,63 +7,74 @@ export default function WordOfTheMonth() {
   const { ref, inView } = useInView({ triggerOnce: false });
 
   return (
-    <section
-      ref={ref}
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '2rem',
-        padding: '5rem 1.5rem',
-        alignItems: 'center',
-        backgroundColor: '#fff',
-        color: '#000',
-      }}
-    >
-      <motion.img
-        src="/images/pastor_chris.jpg"
-        alt="Word of the Month"
-        initial={{ opacity: 0, x: -50 }}
-        animate={inView ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.8 }}
-        style={{
-          width: '16rem',
-          height: '16rem',
-          objectFit: 'cover',
-          borderRadius: '1rem',
-          border: '4px solid #6b21a8', // purple-700
-        }}
-      />
+     <div style={{display:'block'}}>  
+           <h2 
+           style={{ fontSize: '1.4rem', 
+           fontWeight: 700, 
+           marginBottom: '0.5rem', 
+           color: '#000', 
+           textAlign:'center',
+           paddingTop:'3rem', 
+           paddingRight:'3rem' 
+           
+           }}>
+                Word of the Month
+            </h2>
 
-      <motion.div
-        initial={{ opacity: 0, x: 50 }}
-        animate={inView ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.8 }}
-        style={{ display: 'flex', flexDirection: 'column', gap: '1rem', textAlign: 'left', maxWidth: '600px' }}
+      <section
+        ref={ref}
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '2rem',
+          padding: '0.3rem 2rem',
+          alignItems: 'center',
+          backgroundColor: '#fff',
+          color: '#000',
+        }}
       >
-        <h2 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>
-          Word of the Month
-        </h2>
-        <p style={{ color: '#4b5563' }}>
-          {metaData.wordOfTheMonth.description}
-        </p>
-        <button
+        <motion.img
+          src="/images/pastor_chris.jpg"
+          alt="Word of the Month"
+          initial={{ opacity: 0, x: -50 }}
+          animate={inView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.8 }}
           style={{
-            backgroundColor: '#6b21a8',
-            color: '#fff',
-            padding: '0.5rem 1.5rem',
-            borderRadius: '0.5rem',
-            fontWeight: 600,
-            border: 'none',
-            cursor: 'pointer',
-            width: 'max-content',
-            transition: 'all 0.3s',
+            width: '18rem',
+            height: '14rem',
+            objectFit: 'cover',
+            borderRadius: '3rem',
+            border: '5px solid #6b21a8', // purple-700
           }}
-          onMouseOver={(e) => (e.currentTarget.style.textDecoration = 'underline')}
-          onMouseOut={(e) => (e.currentTarget.style.textDecoration = 'none')}
+        />
+
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          animate={inView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          style={{ display: 'flex', flexDirection: 'column', gap: '1rem', textAlign: 'left', maxWidth: '600px' }}
         >
-          Watch Now
-        </button>
-      </motion.div>
-    </section>
+          <p style={{ color: '#4b5563' }}>{metaData.wordOfTheMonth.description}</p>
+           
+          <button
+            style={{
+              backgroundColor: '#6b21a8',
+              color: '#fff',
+              padding: '0.5rem 1.5rem',
+              borderRadius: '0.5rem',
+              fontWeight: 600,
+              border: 'none',
+              cursor: 'pointer',
+              width: 'max-content',
+              transition: 'all 0.3s',
+            }}
+            onMouseOver={(e) => (e.currentTarget.style.textDecoration = 'underline')}
+            onMouseOut={(e) => (e.currentTarget.style.textDecoration = 'none')}
+          >
+            Watch Now
+          </button>
+        </motion.div>
+      </section>
+    </div>
   );
 }

@@ -10,76 +10,97 @@ type PastorProps = {
   buttonLink: string;
 };
 
-export default function PastorSection({ data }: { data: PastorProps }) {
+export default function PastorSection({ data }: { data: PastorProps[] }) {
   const { ref, inView } = useInView({ triggerOnce: false });
 
   return (
-    <section
-      ref={ref}
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '2rem',
-        padding: '5rem 1.5rem',
-        alignItems: 'center',
-        backgroundColor: '#fff',
-        color: '#000',
-      }}
-    >
-      {/* Pastor Image */}
-      <motion.img
-        src={data.image}
-        alt={data.title}
-        initial={{ opacity: 0, x: -50 }}
-        animate={inView ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.8 }}
+    <div style={{ display: 'block' }}>
+      <h2
         style={{
-          width: '16rem',
-          height: '16rem',
-          objectFit: 'cover',
-          borderRadius: '1rem',
-          border: '4px solid #6b21a8', // purple-700
-        }}
-      />
-
-      {/* Text Content */}
-      <motion.div
-        initial={{ opacity: 0, x: 50 }}
-        animate={inView ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.8 }}
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '1rem',
-          textAlign: 'left',
-          maxWidth: '600px',
+          fontSize: '1.4rem',
+          fontWeight: 700,
+          marginBottom: '0.5rem',
+          color: '#000',
+          textAlign: 'center',
+          paddingTop: '3rem',
+          paddingRight: '3rem',
         }}
       >
-        <h2 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '0.5rem' }}>
-          {data.title}
-        </h2>
-        <p style={{ color: '#4b5563' }}>{data.description}</p>
-        <a
-          href={data.buttonLink}
+        A Word from our Pastors
+      </h2>
+
+      {data.map((pastor, index) => (
+        <section
+          key={index}
+          ref={ref}
           style={{
-            backgroundColor: '#6b21a8',
-            color: '#fff',
-            padding: '0.5rem 1.5rem',
-            borderRadius: '0.5rem',
-            fontWeight: 600,
-            border: 'none',
-            cursor: 'pointer',
-            width: 'max-content',
-            textAlign: 'center',
-            textDecoration: 'none',
-            transition: 'all 0.3s',
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '2rem',
+            padding: '0.3rem 2rem',
+            alignItems: 'center',
+            backgroundColor: '#fff',
+            color: '#000',
+            marginBottom: '2rem',
           }}
-          onMouseOver={(e) => (e.currentTarget.style.textDecoration = 'underline')}
-          onMouseOut={(e) => (e.currentTarget.style.textDecoration = 'none')}
         >
-          {data.buttonText}
-        </a>
-      </motion.div>
-    </section>
+          {/* Pastor Image */}
+          <motion.img
+            src={pastor.image}
+            alt={pastor.title}
+            initial={{ opacity: 0, x: -50 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8 }}
+            style={{
+              width: '18rem',
+              height: '14rem',
+              objectFit: 'cover',
+              borderRadius: '3rem',
+              border: '5px solid #6b21a8',
+            }}
+          />
+
+          {/* Text Content */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8 }}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1rem',
+              textAlign: 'left',
+              maxWidth: '600px',
+            }}
+          >
+            <p style={{ color: '#4b5563' }}>{pastor.description}</p>
+            <a
+              href={pastor.buttonLink}
+              style={{
+                backgroundColor: '#6b21a8',
+                color: '#fff',
+                padding: '0.5rem 1.5rem',
+                borderRadius: '0.5rem',
+                fontWeight: 600,
+                border: 'none',
+                cursor: 'pointer',
+                width: 'max-content',
+                textAlign: 'center',
+                textDecoration: 'underline',
+                transition: 'all 0.3s',
+              }}
+              onMouseOver={(e) =>
+                (e.currentTarget.style.textDecoration = 'underline')
+              }
+              onMouseOut={(e) =>
+                (e.currentTarget.style.textDecoration = 'none')
+              }
+            >
+              {pastor.buttonText}
+            </a>
+          </motion.div>
+        </section>
+      ))}
+    </div>
   );
 }
