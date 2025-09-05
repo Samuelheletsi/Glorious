@@ -44,7 +44,7 @@ export default function FindYourPlace() {
             {/* Image */}
             <div
               style={{
-                width: '22rem',
+                width: '20rem',
                 height: '260px',
                 overflow: 'hidden',
                 borderRadius: '1rem',

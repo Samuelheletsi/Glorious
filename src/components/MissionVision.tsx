@@ -25,61 +25,71 @@ export default function MissionVision() {
         textAlign: 'center',
         color: '#3b3395',
         borderRadius: '30px 30px 0 0',
+        overflowX: 'hidden', // 🔒 prevent stretch
       }}
     >
-      {/* Heading */}
-      <h2
-        style={{
-          fontSize: '1.875rem',
-          fontWeight: 700,
-        }}
-      >
-        {missionVision.heading}
-      </h2>
-      <p style={{ marginTop: 0, fontWeight: 500, color: '#333' }}>
-        {missionVision.subtext}
-      </p>
-
-      {/* Cards */}
+      {/* Container to center content */}
       <div
         style={{
-          marginTop: '2.5rem',
-          display: 'flex',
-          flexDirection: isMobile ? 'column' : 'row',
-          flexWrap: 'wrap',
-          gap: '1.5rem',
-          justifyContent: 'center',
+          maxWidth: '1100px', // same as your ServicesSection
+          margin: '0 auto',
+          width: '100%',
         }}
       >
-        {missionVision.cards.map((card, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 40 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: index * 0.2 }}
-            style={{
-              width: isMobile ? '100%' : '15rem',
-              backgroundColor: 'white',
-              color: '#3b3395',
-              borderRadius: '0.75rem',
-              padding: '1rem',
-              flex: 1,
-              textAlign: 'left',
-              boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-            }}
-          >
-            <h3
+        {/* Heading */}
+        <h2
+          style={{
+            fontSize: '1.875rem',
+            fontWeight: 700,
+          }}
+        >
+          {missionVision.heading}
+        </h2>
+        <p style={{ marginTop: 0, fontWeight: 500, color: '#333' }}>
+          {missionVision.subtext}
+        </p>
+
+        {/* Cards */}
+        <div
+          style={{
+            marginTop: '2.5rem',
+            display: 'flex',
+            flexDirection: isMobile ? 'column' : 'row',
+            flexWrap: 'wrap',
+            gap: '1.5rem',
+            justifyContent: 'center',
+          }}
+        >
+          {missionVision.cards.map((card, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
               style={{
-                fontSize: '1.25rem',
-                fontWeight: 700,
-                marginBottom: '0.75rem',
+                flex: isMobile ? '1 1 100%' : '1 1 15rem', // responsive sizing
+                maxWidth: isMobile ? '100%' : '18rem', // prevent cards from stretching too wide
+                backgroundColor: 'white',
+                color: '#3b3395',
+                borderRadius: '0.75rem',
+                padding: '1rem',
+                textAlign: 'left',
+                boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
               }}
             >
-              {card.title}
-            </h3>
-            <p style={{ lineHeight: '1.625' }}>{card.text}</p>
-          </motion.div>
-        ))}
+              <h3
+                style={{
+                  fontSize: '1.25rem',
+                  fontWeight: 700,
+                  marginBottom: '0.75rem',
+                }}
+              >
+                {card.title}
+              </h3>
+              <p style={{ lineHeight: '1.625' }}>{card.text}</p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -107,7 +107,7 @@ export default function GetInTouch() {
             )}
 
             {/* Name + Surname */}
-            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: '1rem' }}>
               <label
                 style={{ display: 'flex', flexDirection: 'column', fontWeight: 500, color: '#fff' }}
               >
@@ -118,9 +118,10 @@ export default function GetInTouch() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  style={{ ...baseInputStyle, width: '12rem' }}
+                  style={{ ...baseInputStyle, width: '10rem' }}
                   onFocus={(e) => (e.currentTarget.style.borderColor = '#3b3395')}
                   onBlur={(e) => (e.currentTarget.style.borderColor = '#ccc')}
+                  placeholder='First Name'
                 />
               </label>
               <label
@@ -133,9 +134,10 @@ export default function GetInTouch() {
                   value={formData.surname}
                   onChange={handleChange}
                   required
-                  style={{ ...baseInputStyle, width: '12rem' }}
+                  style={{ ...baseInputStyle, width: '10rem' }}
                   onFocus={(e) => (e.currentTarget.style.borderColor = '#3b3395')}
                   onBlur={(e) => (e.currentTarget.style.borderColor = '#ccc')}
+                  placeholder='Surname'
                 />
               </label>
             </div>
