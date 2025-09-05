@@ -32,7 +32,7 @@
     "next-env.d.ts",
     "src/**/*",
     ".next/types/**/*.ts"
-  ],
+, "src/components/generate-qr.ts", "scripts"  ],
   "exclude": [
     "node_modules"
   ]
