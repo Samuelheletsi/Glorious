@@ -5,6 +5,7 @@ import { FaInstagram } from 'react-icons/fa';
 export default function Branches() {
   return (
     <section
+     id='branches'
       style={{
         padding: '3rem 1.5rem',
         maxWidth: '80rem', // roughly equivalent to max-w-5xl

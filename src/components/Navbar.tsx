@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import content from '@/data/meta.json';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -31,7 +32,7 @@ export default function Navbar() {
         left: 2,
         right: 0,
         display: 'flex',
-        justifyContent: 'center', // ✅ centers the nav
+        justifyContent: 'center',
         zIndex: 10,
       }}
     >
@@ -40,7 +41,7 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
         style={{
-          width: isMobile ? '95%' : '90%', // ✅ responsive widths
+          width: isMobile ? '95%' : '90%',
           maxWidth: '800px',
           display: 'flex',
           justifyContent: 'space-between',
@@ -95,7 +96,6 @@ export default function Navbar() {
                 stroke="currentColor"
                 strokeWidth={2}
                 viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
               >
                 {menuOpen ? (
                   <path
@@ -131,29 +131,28 @@ export default function Navbar() {
                   boxShadow: '0 8px 20px rgba(0,0,0,0.2)',
                 }}
               >
-                {['Programs', 'Testimonies', 'About', 'Churches'].map(
-                  (item) => (
-                    <p
-                      key={item}
-                      style={{
-                        color: '#fff',
-                        fontSize: '1rem',
-                        fontWeight: 600,
-                        margin: 0,
-                        cursor: 'pointer',
-                        transition: 'color 0.3s',
-                      }}
-                      onMouseEnter={(e) =>
-                        (e.currentTarget.style.color = '#FBBF24')
-                      }
-                      onMouseLeave={(e) =>
-                        (e.currentTarget.style.color = '#fff')
-                      }
-                    >
-                      {item}
-                    </p>
-                  )
-                )}
+                {content.navLinks.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.path}
+                    style={{
+                      color: '#fff',
+                      fontSize: '1rem',
+                      fontWeight: 600,
+                      cursor: 'pointer',
+                      transition: 'color 0.3s',
+                      textDecoration:'none'
+                    }}
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.color = '#FBBF24')
+                    }
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.color = '#fff')
+                    }
+                  >
+                    {link.label}
+                  </a>
+                ))}
                 <button
                   onClick={() => router.push('/give')}
                   style={{
@@ -195,17 +194,22 @@ export default function Navbar() {
               padding: 0,
             }}
           >
-            {['Programs', 'Testimonies', 'About', 'Churches'].map((item) => (
+            {content.navLinks.map((link) => (
               <li
-                key={item}
+                key={link.label}
                 style={{
                   cursor: 'pointer',
                   transition: 'color 0.3s',
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = '#FBBF24')}
-                onMouseLeave={(e) => (e.currentTarget.style.color = '#fff')}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.color = '#FBBF24')
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.color = '#fff')
+                }
+                onClick={() => router.push(link.path)}
               >
-                {item}
+                {link.label}
               </li>
             ))}
             <li>

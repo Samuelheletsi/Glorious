@@ -18,6 +18,7 @@ export default function MissionVision() {
 
   return (
     <section
+      id='missions'
       ref={ref}
       style={{
         backgroundColor: '#f4b914',

@@ -5,6 +5,7 @@ import meta from '@/data/meta.json';
 export default function Hero() {
   return (
     <section
+       id='home'
       style={{
         height: '100vh',
         position: 'relative',
@@ -74,7 +75,7 @@ export default function Hero() {
           style={{
             marginTop: '1rem',
             fontSize: '1.125rem',
-            color: '#6B21A8',
+            color: '#FFFDD0',
             fontWeight: 530,
           }}
         >

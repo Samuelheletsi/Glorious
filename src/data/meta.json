@@ -2,6 +2,13 @@
   "hero": "We Are Glad You Are Here!",
   "cta": "Join Us This Week",
   "watchLive": "Watch Live",
+  "navLinks": [
+    { "path": "#home", "label": "Home" },
+    { "path": "#pastors", "label": "Pastors" },
+    { "path": "#experience", "label": "Experience" },
+    { "path": "#branches", "label": "Branches" },
+    { "path": "#missions", "label": "Missions" }
+  ],
   "welcome": {
     "mainText": "We Are Glad You Are Here!",
     "subText": "A people that love and hallow God passionately",

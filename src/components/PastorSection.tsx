@@ -14,7 +14,7 @@ export default function PastorSection({ data }: { data: PastorProps[] }) {
   const { ref, inView } = useInView({ triggerOnce: false });
 
   return (
-    <div style={{ display: 'block' }}>
+    <div style={{ display: 'block' }} id='pastors'>
       <h2
         style={{
           fontSize: '2rem',
