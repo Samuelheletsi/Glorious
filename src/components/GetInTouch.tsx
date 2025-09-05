@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function GetInTouch() {
   const [formData, setFormData] = useState({
@@ -11,6 +11,15 @@ export default function GetInTouch() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsLargeScreen(window.innerWidth >= 1024);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -89,15 +98,36 @@ export default function GetInTouch() {
               </p>
             )}
 
-            <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
-              <label style={{ display: "block", color: "#fff" }}>
+            {/* Name & Surname - responsive */}
+            <div style={{
+              display: isLargeScreen ? 'flex' : 'block',
+              gap: isLargeScreen ? '1.5rem' : '0',
+              flexWrap: 'wrap'
+            }}>
+              <label style={{ display: "block", color: "#fff", flex: 1 }}>
                 Name
-                <input type="text" name="name" value={formData.name} onChange={handleChange} required style={baseInputStyle} placeholder="First Name" />
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  style={baseInputStyle}
+                  placeholder="First Name"
+                />
               </label>
 
-              <label style={{ display: "block", color: "#fff" }}>
+              <label style={{ display: "block", color: "#fff", flex: 1 }}>
                 Surname
-                <input type="text" name="surname" value={formData.surname} onChange={handleChange} required style={baseInputStyle} placeholder="Surname" />
+                <input
+                  type="text"
+                  name="surname"
+                  value={formData.surname}
+                  onChange={handleChange}
+                  required
+                  style={baseInputStyle}
+                  placeholder="Surname"
+                />
               </label>
             </div>
 
