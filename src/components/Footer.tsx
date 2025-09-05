@@ -1,6 +1,6 @@
 'use client';
 import footerData from '@/data/footer.json';
-import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { FaInstagram, FaTelegram, FaYoutube } from 'react-icons/fa';
 
 export default function Footer() {
   return (
@@ -11,6 +11,7 @@ export default function Footer() {
         padding: '1rem ',
         textAlign: 'center',
         fontWeight: 600,
+        borderRadius: '30px 30px 0 0',
       }}
     >
       {/* Big faded title */}
@@ -43,6 +44,7 @@ export default function Footer() {
               fontWeight: 700,
               textTransform: 'uppercase',
               letterSpacing: '0.05em',
+              color: 'white', 
             }}
           >
             OUR LOCATION
@@ -50,7 +52,7 @@ export default function Footer() {
           <a
             href={footerData.location.url}
             style={{
-              color: '#FFD700', // highlightYellow
+              color: 'white', // highlightYellow
               textDecoration: 'underline',
               marginTop: '0.25rem',
               display: 'block',
@@ -104,14 +106,14 @@ export default function Footer() {
                 <FaInstagram size={20} />
               </a>
             )}
-            {footerData.socials.twitter && (
+            {footerData.socials.telegram && (
               <a
-                href={footerData.socials.twitter}
+                href={footerData.socials.telegram}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ color: 'white' }}
               >
-                <FaTwitter size={20} />
+                <FaTelegram size={20} />
               </a>
             )}
             {footerData.socials.youtube && (

@@ -1,15 +1,24 @@
 'use client';
 import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import mandates from '@/data/mandates.json';
 
-export default function WhatsHappening() {
-  const { ref, inView } = useInView({ triggerOnce: false });
+interface Service {
+  id: string;
+  title: string;
+  description: string;
+  date: string;
+  location: string;
+  image: string;
+}
+
+export default function ServicesSection() {
+  const [services, setServices] = useState<Service[]>([]);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
 
   useEffect(() => {
+    import('../data/service.json').then((module) => setServices(module.default));
+
     const handleResize = () => setIsLargeScreen(window.innerWidth >= 1024);
     handleResize();
     window.addEventListener('resize', handleResize);
@@ -30,15 +39,14 @@ export default function WhatsHappening() {
 
   return (
     <section
-      ref={ref}
       style={{
-        backgroundColor: '#f9fafb', // optional light bg
+        backgroundColor: '#f9fafb',
         padding: '4rem 0',
         display: 'flex',
         justifyContent: 'center',
+        overflowX: 'hidden', // prevent page stretching
       }}
     >
-      {/* Constrained container */}
       <div
         style={{
           maxWidth: '1100px',
@@ -48,21 +56,16 @@ export default function WhatsHappening() {
         }}
       >
         {/* Heading */}
-        <div
-          style={{
-            marginBottom: '2rem',
-            color: '#1e293b',
-          }}
-        >
-          <h2 style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '0.5rem' }}>
-            What’s Happening
+        <div style={{ marginBottom: '2rem', color: '#1e293b' }}>
+          <h2 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '0.5rem' }}>
+            Experience Our Services
           </h2>
           <p style={{ color: '#6b7280', fontSize: '1rem' }}>
-            Key activities for the week or month
+            Join us in person or online. A powerful experience awaits you.
           </p>
         </div>
 
-        {/* Scroll buttons for small/medium screens */}
+        {/* Scroll buttons for mobile/tablet */}
         {!isLargeScreen && (
           <>
             <button
@@ -110,23 +113,31 @@ export default function WhatsHappening() {
           </>
         )}
 
-        {/* Cards */}
+        {/* Cards container */}
         <div
           ref={scrollRef}
           style={{
             display: isLargeScreen ? 'grid' : 'flex',
-            gridTemplateColumns: isLargeScreen ? `repeat(${mandates.length}, 1fr)` : undefined,
+            gridTemplateColumns: isLargeScreen ? `repeat(${services.length}, 1fr)` : undefined,
             gap: '2rem',
             overflowX: isLargeScreen ? 'visible' : 'auto',
             padding: '1rem 0',
             scrollSnapType: isLargeScreen ? 'none' : 'x mandatory',
             WebkitOverflowScrolling: 'touch',
-            scrollbarWidth: 'thin',
+            msOverflowStyle: 'none', // hide scrollbar IE/Edge
+            scrollbarWidth: 'none', // hide scrollbar Firefox
           }}
         >
-          {mandates.map((m, index) => (
+          {/* Hide scrollbar Chrome/Safari */}
+          <style jsx>{`
+            div::-webkit-scrollbar {
+              display: none;
+            }
+          `}</style>
+
+          {services.map((service, index) => (
             <motion.div
-              key={m.id}
+              key={service.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -144,8 +155,8 @@ export default function WhatsHappening() {
               }}
             >
               <img
-                src={m.image}
-                alt={m.title}
+                src={service.image}
+                alt={service.title}
                 style={{
                   width: '100%',
                   height: '180px',
@@ -162,10 +173,11 @@ export default function WhatsHappening() {
                   flex: 1,
                 }}
               >
-                <h3 style={{ fontSize: '1.2rem', fontWeight: '600', marginBottom: '0.5rem' }}>
-                  {m.title}
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '0.5rem' }}>
+                  {service.title}
                 </h3>
-                <p style={{ color: '#4b5563', flex: 1 }}>{m.description}</p>
+                <p style={{ color: '#6b21a8', fontWeight: 'bold', margin: 0 }}>{service.date}</p>
+                <p style={{ color: '#4b5563', marginTop: '0.1rem', flex: 1 }}>{service.description}</p>
                 <button
                   style={{
                     marginTop: '1rem',
@@ -176,9 +188,12 @@ export default function WhatsHappening() {
                     borderRadius: '0.5rem',
                     cursor: 'pointer',
                     fontWeight: 600,
+                    alignSelf: 'flex-start',
                   }}
+                  onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#facc15')}
+                  onMouseOut={(e) => (e.currentTarget.style.backgroundColor = '#a78bfa')}
                 >
-                  Be Involved →
+                  Reach Us →
                 </button>
               </div>
             </motion.div>
