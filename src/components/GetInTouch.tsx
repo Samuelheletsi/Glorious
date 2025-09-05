@@ -32,6 +32,7 @@ export default function GetInTouch() {
     outline: 'none',
     width: '100%',
     transition: 'all 0.2s ease',
+    boxSizing: 'border-box', // ✅ avoids overflow
   };
 
   return (
@@ -42,13 +43,15 @@ export default function GetInTouch() {
       style={{
         width: '100%',
         backgroundColor: '#3b3395',
+        overflowX: 'hidden', // ✅ prevents horizontal scrolling
       }}
     >
       <div
         style={{
-          maxWidth: '80rem',
+          maxWidth: '1100px', // ✅ matches other sections
           margin: '0 auto',
-          padding: '4rem 1.5rem',
+          padding: '4rem 0.2rem',
+          width: '100%',
         }}
       >
         {/* Heading */}
@@ -74,14 +77,11 @@ export default function GetInTouch() {
           We&apos;d love to hear from you! Fill out the form below or reach us via email or phone.
         </p>
 
-        {/* Layout Grid */}
+        {/* Form wrapper */}
         <div
           style={{
             display: 'flex',
-            justifyContent:'center',
-            alignItems:'center'
-             
-            
+            justifyContent: 'center',
           }}
         >
           {/* Contact Form */}
@@ -97,6 +97,8 @@ export default function GetInTouch() {
               display: 'flex',
               flexDirection: 'column',
               gap: '1rem',
+              width: '100%', // ✅ responsive
+              maxWidth: '600px', // ✅ constrain form width
               boxShadow: '0 12px 17px rgba(0,0,0,0.1)',
             }}
           >
@@ -107,9 +109,16 @@ export default function GetInTouch() {
             )}
 
             {/* Name + Surname */}
-            <div style={{ display: 'flex', gap: '1rem' }}>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                gap: '1rem',
+                flexWrap: 'wrap', // ✅ allows stacking on small screens
+              }}
+            >
               <label
-                style={{ display: 'flex', flexDirection: 'column', fontWeight: 500, color: '#fff' }}
+                style={{ flex: 1, display: 'flex', flexDirection: 'column', fontWeight: 500, color: '#fff' }}
               >
                 Name
                 <input
@@ -118,14 +127,14 @@ export default function GetInTouch() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  style={{ ...baseInputStyle, width: '10rem' }}
+                  style={baseInputStyle}
                   onFocus={(e) => (e.currentTarget.style.borderColor = '#3b3395')}
                   onBlur={(e) => (e.currentTarget.style.borderColor = '#ccc')}
-                  placeholder='First Name'
+                  placeholder="First Name"
                 />
               </label>
               <label
-                style={{ display: 'flex', flexDirection: 'column', fontWeight: 500, color: '#fff' }}
+                style={{ flex: 1, display: 'flex', flexDirection: 'column', fontWeight: 500, color: '#fff' }}
               >
                 Surname
                 <input
@@ -134,18 +143,16 @@ export default function GetInTouch() {
                   value={formData.surname}
                   onChange={handleChange}
                   required
-                  style={{ ...baseInputStyle, width: '10rem' }}
+                  style={baseInputStyle}
                   onFocus={(e) => (e.currentTarget.style.borderColor = '#3b3395')}
                   onBlur={(e) => (e.currentTarget.style.borderColor = '#ccc')}
-                  placeholder='Surname'
+                  placeholder="Surname"
                 />
               </label>
             </div>
 
             {/* Email */}
-            <label
-              style={{ display: 'flex', flexDirection: 'column', fontWeight: 500, color: '#fff' }}
-            >
+            <label style={{ display: 'flex', flexDirection: 'column', fontWeight: 500, color: '#fff' }}>
               Email
               <input
                 type="email"
@@ -160,9 +167,7 @@ export default function GetInTouch() {
             </label>
 
             {/* Message */}
-            <label
-              style={{ display: 'flex', flexDirection: 'column', fontWeight: 500, color: '#fff' }}
-            >
+            <label style={{ display: 'flex', flexDirection: 'column', fontWeight: 500, color: '#fff' }}>
               Message
               <textarea
                 name="message"
@@ -199,11 +204,9 @@ export default function GetInTouch() {
                 e.currentTarget.style.color = '#fff';
               }}
             >
-              Submit 
+              Submit
             </button>
           </motion.form>
-
-          
         </div>
       </div>
     </motion.section>
