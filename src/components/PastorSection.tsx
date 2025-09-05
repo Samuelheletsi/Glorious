@@ -17,7 +17,7 @@ export default function PastorSection({ data }: { data: PastorProps[] }) {
     <div style={{ display: 'block' }}>
       <h2
         style={{
-          fontSize: '1.4rem',
+          fontSize: '2rem',
           fontWeight: 700,
           marginBottom: '0.5rem',
           color: '#000',

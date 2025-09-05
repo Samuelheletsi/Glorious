@@ -9,7 +9,7 @@ export default function WordOfTheMonth() {
   return (
      <div style={{display:'block'}}>  
            <h2 
-           style={{ fontSize: '1.4rem', 
+           style={{ fontSize: '2rem', 
            fontWeight: 700, 
            marginBottom: '0.5rem', 
            color: '#000', 
