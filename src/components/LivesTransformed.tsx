@@ -14,6 +14,7 @@ export default function LivesTransformed() {
       style={{
         padding: '4rem 1rem',
         margin: '0 auto',
+        maxWidth: '1200px',
       }}
     >
       {/* Heading */}
@@ -27,12 +28,7 @@ export default function LivesTransformed() {
         >
           Lives Transformed
         </h2>
-        <p
-          style={{
-            color: '#6b7280',
-            fontSize: '1.125rem',
-          }}
-        >
+        <p style={{ color: '#6b7280', fontSize: '1.125rem' }}>
           Real stories of faith and healing
         </p>
       </div>
@@ -41,65 +37,35 @@ export default function LivesTransformed() {
       <div
         style={{
           display: 'flex',
-          flexDirection:'column',
-          gap: '2rem',
+          flexWrap: 'wrap',
           justifyContent: 'center',
+          gap: '2rem',
         }}
       >
         {testimonies.map((t, i) => (
           <motion.div
-            key={i}
+            key={t.id}
             initial={{ opacity: 0, y: 50 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: i * 0.2, duration: 0.8 }}
-            className="card"
             style={{
               display: 'flex',
-              flexWrap: 'wrap',
-              gap: '2rem',
-              maxWidth: '100%',
+              flexDirection: 'column',
+              alignItems: 'center',
               backgroundColor: '#fff',
-               
-              
+              borderRadius: '1rem',
+              padding: '1.5rem',
+              width: '100%',
+              maxWidth: '350px',
+              boxShadow: '0 10px 25px rgba(0,0,0,0.1)',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
             }}
-            whileHover={{ y: -8 }} // card lift
+            whileHover={{ transform: 'translateY(-8px)' }}
           >
+            {/* Image */}
             <div
-            
               style={{
-                width: '22rem',
-                gap:'7rem'
-              }}>
-                <h2 
-                    style={{
-                         fontWeight:'700',
-                         fontSize:'1.2rem'
-                    }}
-                >{t.message}</h2>
-                   <p
-                      style={{
-                        color: '#374151',
-                        textAlign: 'center',
-                        fontSize: '1rem',
-                      }}
-                    >
-                      {t.text}
-                   </p>
-                   <p
-                      style={{
-                        color: '#374151',
-                        textAlign: 'center',
-                        fontSize: '1rem',
-                      }}
-                    >
-                      {t.text2}
-                   </p>
-            </div>
-              
-            <div
-              className="image-wrapper"
-              style={{
-                width: '20rem',
+                width: '100%',
                 height: '220px',
                 overflow: 'hidden',
                 borderRadius: '1rem',
@@ -109,10 +75,9 @@ export default function LivesTransformed() {
             >
               <Image
                 src={t.image}
-                alt={t.text}
+                alt={t.message}
                 width={400}
                 height={220}
-                className="zoom-image"
                 style={{
                   width: '100%',
                   height: '100%',
@@ -121,32 +86,43 @@ export default function LivesTransformed() {
                 }}
               />
             </div>
-            
+
+            {/* Message */}
+            <h3
+              style={{
+                fontSize: '1.25rem',
+                fontWeight: 700,
+                color: '#1f2937',
+                marginBottom: '0.5rem',
+                textAlign: 'center',
+              }}
+            >
+              {t.message}
+            </h3>
+
+            {/* Text */}
+            <p
+              style={{
+                color: '#374151',
+                fontSize: '0.95rem',
+                textAlign: 'justify',
+                marginBottom: '0.5rem',
+              }}
+            >
+              {t.text}
+            </p>
+            <p
+              style={{
+                color: '#374151',
+                fontSize: '0.95rem',
+                textAlign: 'justify',
+              }}
+            >
+              {t.text2}
+            </p>
           </motion.div>
         ))}
       </div>
-
-      {/* Responsive + Hover styles */}
-      <style jsx>{`
-        .card:hover {
-          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        .card:hover .zoom-image {
-          transform: scale(1.08);
-        }
-        @media (min-width: 640px) {
-          .card {
-            flex: 1 1 calc(50% - 2rem);
-            max-width: calc(50% - 2rem);
-          }
-        }
-        @media (min-width: 1024px) {
-          .card {
-            flex: 1 1 calc(33.333% - 2rem);
-            max-width: calc(33.333% - 2rem);
-          }
-        }
-      `}</style>
     </section>
   );
 }

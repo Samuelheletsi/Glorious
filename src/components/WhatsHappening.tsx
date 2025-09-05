@@ -23,13 +23,8 @@ export default function WhatsHappeningSection() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const scrollLeft = () => {
-    if (scrollRef.current) scrollRef.current.scrollBy({ left: -300, behavior: 'smooth' });
-  };
-
-  const scrollRight = () => {
-    if (scrollRef.current) scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' });
-  };
+  const scrollLeft = () => scrollRef.current?.scrollBy({ left: -300, behavior: 'smooth' });
+  const scrollRight = () => scrollRef.current?.scrollBy({ left: 300, behavior: 'smooth' });
 
   return (
     <section
@@ -43,11 +38,11 @@ export default function WhatsHappeningSection() {
     >
       <div style={{ maxWidth: '1100px', width: '100%', padding: '0 1rem', position: 'relative' }}>
         {/* Heading */}
-        <div style={{ marginBottom: '2rem', color: '#1e293b' }}>
-          <h2 style={{ fontSize: '2.5rem', textAlign:'center', fontWeight: 700, marginBottom: '0.5rem' }}>
+        <div style={{ marginBottom: '2rem', color: '#1e293b', textAlign: 'center' }}>
+          <h2 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '0.5rem' }}>
             What's Happening
           </h2>
-          <p style={{ color: '#6b7280', fontSize: '1rem',textAlign:'center' }}>
+          <p style={{ color: '#6b7280', fontSize: '1rem' }}>
             Key activities happening this week/month
           </p>
         </div>
@@ -153,7 +148,7 @@ export default function WhatsHappeningSection() {
               />
               <div
                 style={{
-                  padding: '1rem 1rem 1.5rem',
+                  padding: '1rem',
                   display: 'flex',
                   flexDirection: 'column',
                   flex: 1,
@@ -162,12 +157,11 @@ export default function WhatsHappeningSection() {
                 <h3 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '0.5rem' }}>
                   {event.title}
                 </h3>
-                <p style={{ color: '#4b5563', marginTop: '0.1rem', flex: 1 }}>
+                <p style={{ color: '#4b5563', flex: 1, marginBottom: '1rem' }}>
                   {event.description}
                 </p>
                 <button
                   style={{
-                    marginTop: '1rem',
                     padding: '0.5rem 1.25rem',
                     backgroundColor: '#a78bfa',
                     color: '#fff',
@@ -176,6 +170,7 @@ export default function WhatsHappeningSection() {
                     cursor: 'pointer',
                     fontWeight: 600,
                     alignSelf: 'flex-start',
+                    transition: 'background-color 0.3s ease',
                   }}
                   onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#facc15')}
                   onMouseOut={(e) => (e.currentTarget.style.backgroundColor = '#a78bfa')}
