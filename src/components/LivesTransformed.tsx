@@ -56,7 +56,7 @@ export default function LivesTransformed() {
             style={{
               display: 'flex',
               flexWrap: 'wrap',
-              gap: '1.5rem',
+              gap: '2rem',
               maxWidth: '100%',
               backgroundColor: '#fff',
                
@@ -67,8 +67,15 @@ export default function LivesTransformed() {
             <div
             
               style={{
-                width: '20rem',
+                width: '22rem',
+                gap:'7rem'
               }}>
+                <h2 
+                    style={{
+                         fontWeight:'700',
+                         fontSize:'1.2rem'
+                    }}
+                >{t.message}</h2>
                    <p
                       style={{
                         color: '#374151',
@@ -77,6 +84,15 @@ export default function LivesTransformed() {
                       }}
                     >
                       {t.text}
+                   </p>
+                   <p
+                      style={{
+                        color: '#374151',
+                        textAlign: 'center',
+                        fontSize: '1rem',
+                      }}
+                    >
+                      {t.text2}
                    </p>
             </div>
               

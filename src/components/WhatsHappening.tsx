@@ -2,22 +2,20 @@
 import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 
-interface Service {
+interface Event {
   id: string;
   title: string;
   description: string;
-  date: string;
-  location: string;
   image: string;
 }
 
-export default function ServicesSection() {
-  const [services, setServices] = useState<Service[]>([]);
+export default function WhatsHappeningSection() {
+  const [events, setEvents] = useState<Event[]>([]);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
 
   useEffect(() => {
-    import('../data/service.json').then((module) => setServices(module.default));
+    import('../data/mandates.json').then((module) => setEvents(module.default));
 
     const handleResize = () => setIsLargeScreen(window.innerWidth >= 1024);
     handleResize();
@@ -26,15 +24,11 @@ export default function ServicesSection() {
   }, []);
 
   const scrollLeft = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -300, behavior: 'smooth' });
-    }
+    if (scrollRef.current) scrollRef.current.scrollBy({ left: -300, behavior: 'smooth' });
   };
 
   const scrollRight = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' });
-    }
+    if (scrollRef.current) scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' });
   };
 
   return (
@@ -44,24 +38,17 @@ export default function ServicesSection() {
         padding: '4rem 0',
         display: 'flex',
         justifyContent: 'center',
-        overflowX: 'hidden', // prevent page stretching
+        overflowX: 'hidden',
       }}
     >
-      <div
-        style={{
-          maxWidth: '1100px',
-          width: '100%',
-          padding: '0 1rem',
-          position: 'relative',
-        }}
-      >
+      <div style={{ maxWidth: '1100px', width: '100%', padding: '0 1rem', position: 'relative' }}>
         {/* Heading */}
         <div style={{ marginBottom: '2rem', color: '#1e293b' }}>
-          <h2 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '0.5rem' }}>
-            Experience Our Services
+          <h2 style={{ fontSize: '2.5rem', textAlign:'center', fontWeight: 700, marginBottom: '0.5rem' }}>
+            What's Happening
           </h2>
-          <p style={{ color: '#6b7280', fontSize: '1rem' }}>
-            Join us in person or online. A powerful experience awaits you.
+          <p style={{ color: '#6b7280', fontSize: '1rem',textAlign:'center' }}>
+            Key activities happening this week/month
           </p>
         </div>
 
@@ -118,26 +105,25 @@ export default function ServicesSection() {
           ref={scrollRef}
           style={{
             display: isLargeScreen ? 'grid' : 'flex',
-            gridTemplateColumns: isLargeScreen ? `repeat(${services.length}, 1fr)` : undefined,
+            gridTemplateColumns: isLargeScreen ? `repeat(${events.length}, 1fr)` : undefined,
             gap: '2rem',
             overflowX: isLargeScreen ? 'visible' : 'auto',
             padding: '1rem 0',
             scrollSnapType: isLargeScreen ? 'none' : 'x mandatory',
             WebkitOverflowScrolling: 'touch',
-            msOverflowStyle: 'none', // hide scrollbar IE/Edge
-            scrollbarWidth: 'none', // hide scrollbar Firefox
+            msOverflowStyle: 'none',
+            scrollbarWidth: 'none',
           }}
         >
-          {/* Hide scrollbar Chrome/Safari */}
           <style jsx>{`
             div::-webkit-scrollbar {
               display: none;
             }
           `}</style>
 
-          {services.map((service, index) => (
+          {events.map((event, index) => (
             <motion.div
-              key={service.id}
+              key={event.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -155,8 +141,8 @@ export default function ServicesSection() {
               }}
             >
               <img
-                src={service.image}
-                alt={service.title}
+                src={event.image}
+                alt={event.title}
                 style={{
                   width: '100%',
                   height: '180px',
@@ -174,10 +160,11 @@ export default function ServicesSection() {
                 }}
               >
                 <h3 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '0.5rem' }}>
-                  {service.title}
+                  {event.title}
                 </h3>
-                <p style={{ color: '#6b21a8', fontWeight: 'bold', margin: 0 }}>{service.date}</p>
-                <p style={{ color: '#4b5563', marginTop: '0.1rem', flex: 1 }}>{service.description}</p>
+                <p style={{ color: '#4b5563', marginTop: '0.1rem', flex: 1 }}>
+                  {event.description}
+                </p>
                 <button
                   style={{
                     marginTop: '1rem',

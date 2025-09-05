@@ -66,10 +66,10 @@ export default function ServicesSection() {
             color: '#1e293b',
           }}
         >
-          <h2 style={{ fontSize: '2.5rem', fontWeight: 'bold' }}>
+          <h2 style={{ fontSize: '2.5rem', fontWeight: 'bold', textAlign:'center'}}>
             Experience Our Services
           </h2>
-          <p style={{ color: '#4b5563', marginTop: '0.5rem', fontSize: '1.2rem' }}>
+          <p style={{ color: '#4b5563', marginTop: '0.5rem', fontSize: '1.2rem', textAlign:'center' }}>
             Join us in person or online. A powerful experience awaits you.
           </p>
         </div>
