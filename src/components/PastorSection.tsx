@@ -73,7 +73,7 @@ export default function PastorSection({ data }: { data: PastorProps[] }) {
               maxWidth: '600px'
             }}
           >
-            <p style={{ color: '#4b5563' }}>{pastor.description}</p>
+            <p style={{ color: '#4b5563', fontSize:'1rem', textAlign:'center' }}>{pastor.description}</p>
             <a
               href={pastor.buttonLink}
               style={{

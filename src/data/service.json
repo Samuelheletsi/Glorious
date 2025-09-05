@@ -3,17 +3,17 @@
     "id": "1",
     "title": "Jesus Alive Miracle Conference with Pastor Wisdom",
     "description": "Empowering youth to grow in faith and leadership.",
-    "date": "5TH SEPTEMBER 6PM",
-    "location": "RYC AUDITORIUM FORECOURT",
-    "image": "/images/service2.jpg"
+    "date": "6TH SEPTEMBER 6PM",
+    "location": "Avery Hills, Spintex",
+    "image": "/images/jesusagl.jpg"
   },
   {
     "id": "2",
     "title": "Jesus Alive Miracle Conference with Pastor David",
     "description": "Special sessions for women to grow spiritually.",
-    "date": "6TH SEPTEMBER 6PM",
-    "location": "Avery Hills, Spintex",
-    "image": "/images/service3.jpg"
+    "date": "5TH SEPTEMBER 6PM",
+    "location": "RYC AUDITORIUM FORECOURT",
+    "image": "/images/jesusapt.jpg"
   },
   {
     "id": "3",
@@ -21,6 +21,6 @@
     "description": " A special ladies conference with our Man of God Pastor David",
     "date": " 27TH SEPTEMBER 3PM",
     "location": "WETLANDS DEPARTMENT,LEGON",
-    "image": "/images/service3.jpg"
+    "image": "/images/ladisp.jpg"
   }
 ]

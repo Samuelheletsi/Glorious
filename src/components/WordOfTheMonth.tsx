@@ -34,7 +34,7 @@ export default function WordOfTheMonth() {
         }}
       >
         <motion.img
-          src="/images/pastor_chris.jpg"
+          src="/images/pastorchris.jpg"
           alt="Word of the Month"
           initial={{ opacity: 0, x: -50 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -45,6 +45,7 @@ export default function WordOfTheMonth() {
             objectFit: 'cover',
             borderRadius: '3rem',
             border: '5px solid #6b21a8', // purple-700
+            alignContent:"center"
           }}
         />
 
@@ -54,8 +55,8 @@ export default function WordOfTheMonth() {
           transition={{ duration: 0.8 }}
           style={{ display: 'flex', flexDirection: 'column', gap: '1rem', textAlign: 'left', maxWidth: '600px' }}
         >
-          <p style={{ color: '#4b5563' }}>{metaData.wordOfTheMonth.description}</p>
-          <p style={{ color: '#4b5563' ,marginTop:'0.3rem'}}>{metaData.wordOfTheMonth.conclude}</p>
+          <p style={{ color: '#4b5563', fontSize:'1rem', textAlign:'center' }}>{metaData.wordOfTheMonth.description}</p>
+          <p style={{ color: '#4b5563' , fontSize:'1rem', textAlign:'center'}}>{metaData.wordOfTheMonth.conclude}</p>
            
           <button
             style={{
@@ -72,7 +73,7 @@ export default function WordOfTheMonth() {
             onMouseOver={(e) => (e.currentTarget.style.textDecoration = 'underline')}
             onMouseOut={(e) => (e.currentTarget.style.textDecoration = 'none')}
           >
-            Watch Now
+            <a href="https://youtu.be/NDEyGsrl3-M?si=Jyk0eqqSZTmzvhVR" style={{textDecoration:'none', color:'white'}}> Watch Now </a>
           </button>
         </motion.div>
       </section>
