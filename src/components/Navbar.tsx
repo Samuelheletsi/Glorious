@@ -23,10 +23,10 @@ export default function Navbar() {
   return (
     <div
       style={{
-        width: '95%',
+        width: '97%',
         position: 'fixed',
         top: '1rem',
-        left: 0,
+        left: 2,
         right: 0,
         display: 'flex',
         justifyContent: 'center', // ✅ centers the nav
