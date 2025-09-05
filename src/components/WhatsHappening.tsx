@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 interface Event {
   id: string;
@@ -40,7 +41,7 @@ export default function WhatsHappeningSection() {
         {/* Heading */}
         <div style={{ marginBottom: '2rem', color: '#1e293b', textAlign: 'center' }}>
           <h2 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '0.5rem' }}>
-            What's Happening
+            What&apos;s Happening
           </h2>
           <p style={{ color: '#6b7280', fontSize: '1rem' }}>
             Key activities happening this week/month
@@ -135,9 +136,11 @@ export default function WhatsHappeningSection() {
                 scrollSnapAlign: 'start',
               }}
             >
-              <img
+              <Image
                 src={event.image}
-                alt={event.title}
+                alt={event.title.replace(/'/g, "&apos;")}
+                width={400}
+                height={180}
                 style={{
                   width: '100%',
                   height: '180px',
@@ -155,10 +158,10 @@ export default function WhatsHappeningSection() {
                 }}
               >
                 <h3 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '0.5rem' }}>
-                  {event.title}
+                  {event.title.replace(/'/g, "&apos;")}
                 </h3>
                 <p style={{ color: '#4b5563', flex: 1, marginBottom: '1rem' }}>
-                  {event.description}
+                  {event.description.replace(/'/g, "&apos;")}
                 </p>
                 <button
                   style={{

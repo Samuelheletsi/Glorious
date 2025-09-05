@@ -62,7 +62,7 @@ export default function GetInTouch() {
           Get in Touch
         </h1>
         <p style={{ textAlign: "center", color: "#fff", marginBottom: "3rem" }}>
-          We'd love to hear from you! Fill out the form below.
+          We&apos;d love to hear from you! Fill out the form below.
         </p>
 
         <div style={{ display: "flex", justifyContent: "center" }}>
@@ -90,17 +90,15 @@ export default function GetInTouch() {
             )}
 
             <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
-          
-                <label style={{ display: "block",   color: "#fff" }}>
-                  Name
-                  <input type="text" name="name" value={formData.name} onChange={handleChange} required style={baseInputStyle} placeholder="First Name" />
-                </label>
+              <label style={{ display: "block", color: "#fff" }}>
+                Name
+                <input type="text" name="name" value={formData.name} onChange={handleChange} required style={baseInputStyle} placeholder="First Name" />
+              </label>
 
-                <label style={{ display: "block",   color: "#fff" }}>
-                  Surname
-                  <input type="text" name="surname" value={formData.surname} onChange={handleChange} required style={baseInputStyle} placeholder="Surname" />
-                </label>
-
+              <label style={{ display: "block", color: "#fff" }}>
+                Surname
+                <input type="text" name="surname" value={formData.surname} onChange={handleChange} required style={baseInputStyle} placeholder="Surname" />
+              </label>
             </div>
 
             <label style={{ display: "flex", flexDirection: "column", color: "#fff" }}>

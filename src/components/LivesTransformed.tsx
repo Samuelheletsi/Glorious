@@ -109,7 +109,7 @@ export default function LivesTransformed() {
                 marginBottom: '0.5rem',
               }}
             >
-              {t.text}
+              {t.text.replace(/'/g, "&apos;")}
             </p>
             <p
               style={{
@@ -118,7 +118,7 @@ export default function LivesTransformed() {
                 textAlign: 'justify',
               }}
             >
-              {t.text2}
+              {t.text2.replace(/'/g, "&apos;")}
             </p>
           </motion.div>
         ))}
