@@ -17,12 +17,28 @@ export default function GetInTouch() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log(formData);
-    setSubmitted(true);
-    setFormData({ name: '', surname: '', email: '', message: '' });
-  };
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  try {
+    const res = await fetch("/api/send-email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    if (res.ok) {
+      setSubmitted(true);
+      setFormData({ name: "", surname: "", email: "", message: "" });
+    } else {
+      alert("Failed to send message. Please try again.");
+    }
+  } catch (error) {
+    console.error(error);
+    alert("Something went wrong.");
+  }
+};
+
 
   const baseInputStyle: React.CSSProperties = {
     border: '1px solid #ccc',
@@ -37,6 +53,7 @@ export default function GetInTouch() {
 
   return (
     <motion.section
+      id='contact'
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}

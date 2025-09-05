@@ -116,7 +116,7 @@ export default function FindYourPlace() {
                   e.currentTarget.style.color = 'white';
                 }}
               >
-                {t.text}
+                <a href="#contact" style={{textDecoration:'none', color:'#f4b914'}}> {t.text}</a>
               </motion.button>
             </div>
           </motion.div>
