@@ -12,9 +12,9 @@ const generateQRCode = async () => {
       width: 300,                 // QR code image width
       margin: 2,                  // small margin
       color: {
-        dark: '#3B82F6',          // QR dark color
-        light: '#FFFFFF',         // QR background
-      },
+          dark: '#000000',  // QR code color
+          light: '#FFFFFF', // background color
+        },
       errorCorrectionLevel: 'H',  // high correction
     });
 
