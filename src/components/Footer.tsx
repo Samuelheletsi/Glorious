@@ -1,14 +1,33 @@
 'use client';
+import { useState, useEffect } from 'react';
 import footerData from '@/data/footer.json';
 import { FaInstagram, FaTelegram, FaYoutube } from 'react-icons/fa';
+import QRCode from 'react-qr-code';
 
 export default function Footer() {
+  const siteUrl = footerData.qrCodeLink || 'https://glorious-ryc.netlify.app/';
+  const [qrSize, setQrSize] = useState(120);
+
+  // Dynamically adjust QR code size based on screen width
+  useEffect(() => {
+    const updateSize = () => {
+      const width = window.innerWidth;
+      if (width < 640) setQrSize(80);    // small screens
+      else if (width < 1024) setQrSize(120); // medium screens
+      else setQrSize(160);               // large screens
+    };
+
+    updateSize();
+    window.addEventListener('resize', updateSize);
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+
   return (
     <footer
       style={{
-        backgroundColor: '#6B21A8', // primaryPurple
+        backgroundColor: '#6B21A8',
         color: 'white',
-        padding: '1rem ',
+        padding: '1rem',
         textAlign: 'center',
         fontWeight: 600,
         borderRadius: '30px 30px 0 0',
@@ -17,7 +36,7 @@ export default function Footer() {
       {/* Big faded title */}
       <h1
         style={{
-          fontSize: '4.25rem', // text-4xl
+          fontSize: '4.25rem',
           fontWeight: 800,
           opacity: 0.2,
           marginBottom: '2rem',
@@ -44,15 +63,17 @@ export default function Footer() {
               fontWeight: 700,
               textTransform: 'uppercase',
               letterSpacing: '0.05em',
-              color: 'white', 
+              color: 'white',
             }}
           >
             OUR LOCATION
           </p>
           <a
             href={footerData.location.url}
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
-              color: 'white', // highlightYellow
+              color: 'white',
               textDecoration: 'underline',
               marginTop: '0.25rem',
               display: 'block',
@@ -130,12 +151,35 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* Clickable Responsive QR Code */}
+      <div
+        style={{
+          marginTop: '2rem',
+          display: 'flex',
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+        }}
+      >
+        <a href={siteUrl} target="_blank" rel="noopener noreferrer">
+          <div
+            style={{
+              background: 'white',
+              padding: '0.5rem',
+              display: 'inline-block',
+              borderRadius: '12px',
+            }}
+          >
+            <QRCode value={siteUrl} size={qrSize} />
+          </div>
+        </a>
+      </div>
+
       {/* Copyright */}
       <p
         style={{
           marginTop: '2.5rem',
           fontSize: '0.75rem',
-          color: '#D1D5DB', // gray-300
+          color: '#D1D5DB',
         }}
       >
         © 2025 Christ Embassy Royalties Youth. All Rights Reserved.

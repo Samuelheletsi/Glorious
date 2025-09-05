@@ -2,10 +2,12 @@
 
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 768px)');
@@ -153,6 +155,7 @@ export default function Navbar() {
                   )
                 )}
                 <button
+                  onClick={() => router.push('/give')}
                   style={{
                     padding: '0.5rem 1.25rem',
                     borderRadius: '9999px',
@@ -207,6 +210,7 @@ export default function Navbar() {
             ))}
             <li>
               <button
+                onClick={() => router.push('/give')}
                 style={{
                   padding: '0.5rem 1.25rem',
                   borderRadius: '10px',
