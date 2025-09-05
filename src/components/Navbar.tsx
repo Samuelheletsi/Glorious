@@ -23,6 +23,7 @@ export default function Navbar() {
   return (
     <div
       style={{
+        width: '95%',
         position: 'fixed',
         top: '1rem',
         left: 0,
