@@ -36,12 +36,12 @@ export default function PastorSection({ data }: { data: PastorProps[] }) {
           style={{
             display: 'flex',
             flexWrap: 'wrap',
-            gap: '2rem',
+            gap: '1rem',
             padding: '0.3rem 2rem',
             alignItems: 'center',
             backgroundColor: '#fff',
             color: '#000',
-            marginBottom: '2rem',
+            marginBottom: '4rem',
           }}
         >
           {/* Pastor Image */}
@@ -68,9 +68,9 @@ export default function PastorSection({ data }: { data: PastorProps[] }) {
             style={{
               display: 'flex',
               flexDirection: 'column',
-              gap: '1rem',
+              gap: '0.5rem',
               textAlign: 'left',
-              maxWidth: '600px',
+              maxWidth: '600px'
             }}
           >
             <p style={{ color: '#4b5563' }}>{pastor.description}</p>
