@@ -19,6 +19,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           fontFamily: 'Poppins, sans-serif',
           minHeight: '100vh',
           margin: 0,
+          padding:0,
           display: 'flex',
           flexDirection: 'column',
         }}
