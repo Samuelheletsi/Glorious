@@ -73,7 +73,7 @@ export default function WordOfTheMonth() {
             onMouseOver={(e) => (e.currentTarget.style.textDecoration = 'underline')}
             onMouseOut={(e) => (e.currentTarget.style.textDecoration = 'none')}
           >
-            <a href="https://www.google.com/search?q=youtube+word+for+the+month+christ+embassy+september+2025+youtube&sca_esv=1e6a950761a072a4&rlz=1C1CHZN_enUS1177US1178&sxsrf=AE3TifPwxgu_Wk-aNOA9c6WZl4321ytztw%3A1757343470918&ei=7u6-aLnWN7fCp84PztONmAo&oq=youtube+word+for+the+month+christ+embassy+september+2025&gs_lp=Egxnd3Mtd2l6LXNlcnAiOHlvdXR1YmUgd29yZCBmb3IgdGhlIG1vbnRoIGNocmlzdCBlbWJhc3N5IHNlcHRlbWJlciAyMDI1KgIIADIFECEYoAEyBRAhGKABMgUQIRigATIFECEYoAEyBRAhGKABSIWHAVCDAliXa3ABeACQAQCYAbkBoAHjD6oBBDAuMTW4AQHIAQD4AQGYAhCgAuwQwgIOEAAYgAQYsAMYhgMYigXCAggQABiwAxjvBcICCxAAGIAEGLADGKIEwgIFECEYqwLCAgUQIRifBZgDAIgGAZAGCJIHBDEuMTWgB5RvsgcEMC4xNbgH4RDCBwgyLTExLjQuMcgHbQ&sclient=gws-wiz-serp#fpstate=ive&vld=cid:61a11883,vid:opDGZgINa14,st:0" style={{textDecoration:'none', color:'white'}}> Watch Now </a>
+            <a href="https://www.youtube.com/watch?v=HFmUwN4O7hk" style={{textDecoration:'none', color:'white'}}> Watch Now </a>
           </button>
         </motion.div>
       </section>
