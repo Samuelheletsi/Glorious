@@ -18,49 +18,19 @@ export default function MissionVision() {
 
   return (
     <section
-      id='missions'
+      id="missions"
       ref={ref}
-      style={{
-        backgroundColor: '#f4b914',
-        padding: '4rem 1.5rem',
-        textAlign: 'center',
-        color: '#3b3395',
-        borderRadius: '30px 30px 0 0',
-        overflowX: 'hidden', // 🔒 prevent stretch
-      }}
+      style={{ backgroundColor: '#f4b914', padding: '4rem 1.5rem', textAlign: 'center', color: '#3b3395', borderTopLeftRadius: '1.5rem', borderTopRightRadius: '1.5rem', overflowX: 'hidden' }}
     >
-      {/* Container to center content */}
-      <div
-        style={{
-          maxWidth: '1100px', // same as your ServicesSection
-          margin: '0 auto',
-          width: '100%',
-        }}
-      >
-        {/* Heading */}
-        <h2
-          style={{
-            fontSize: '1.875rem',
-            fontWeight: 700,
-          }}
-        >
+      <div style={{ maxWidth: '80rem', margin: '0 auto', width: '100%' }}>
+        <h2 style={{ fontSize: '1.875rem', fontWeight: 'bold' }}>
           {missionVision.heading}
         </h2>
-        <p style={{ marginTop: 0, fontWeight: 500, color: '#333' }}>
+        <p style={{ marginTop: 0, fontWeight: '500', color: '#1f2937' }}>
           {missionVision.subtext}
         </p>
 
-        {/* Cards */}
-        <div
-          style={{
-            marginTop: '2.5rem',
-            display: 'flex',
-            flexDirection: isMobile ? 'column' : 'row',
-            flexWrap: 'wrap',
-            gap: '1.5rem',
-            justifyContent: 'center',
-          }}
-        >
+        <div style={{ marginTop: '2.5rem', display: 'flex', flexDirection: isMobile ? 'column' : 'row', flexWrap: 'wrap', gap: '1.5rem', justifyContent: 'center' }}>
           {missionVision.cards.map((card, index) => (
             <motion.div
               key={index}
@@ -68,26 +38,20 @@ export default function MissionVision() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               style={{
-                flex: isMobile ? '1 1 100%' : '1 1 15rem', // responsive sizing
-                maxWidth: isMobile ? '100%' : '18rem', // prevent cards from stretching too wide
+                flex: isMobile ? '1' : '0 0 15rem',
+                maxWidth: isMobile ? '100%' : '18rem',
                 backgroundColor: 'white',
                 color: '#3b3395',
                 borderRadius: '0.75rem',
                 padding: '1rem',
                 textAlign: 'left',
-                boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+                boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
               }}
             >
-              <h3
-                style={{
-                  fontSize: '1.25rem',
-                  fontWeight: 700,
-                  marginBottom: '0.75rem',
-                }}
-              >
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '0.75rem' }}>
                 {card.title}
               </h3>
-              <p style={{ lineHeight: '1.625' }}>{card.text}</p>
+              <p style={{ lineHeight: 1.625 }}>{card.text}</p>
             </motion.div>
           ))}
         </div>

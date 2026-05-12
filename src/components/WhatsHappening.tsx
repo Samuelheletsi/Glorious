@@ -116,7 +116,6 @@ export default function WhatsHappeningSection() {
               display: none;
             }
           `}</style>
-
           {events.map((event, index) => (
             <motion.div
               key={event.id}

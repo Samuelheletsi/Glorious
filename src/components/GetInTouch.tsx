@@ -47,15 +47,14 @@ export default function GetInTouch() {
     }
   };
 
-  const baseInputStyle: React.CSSProperties = {
-    border: "1px solid #ccc",
-    borderRadius: "0.5rem",
-    padding: "0.75rem",
-    marginTop: "0.5rem",
-    outline: "none",
-    width: "100%",
-    boxSizing: "border-box",
-    transition: "all 0.2s ease",
+  const baseInputStyle = {
+    border: '1px solid #d1d5db',
+    borderRadius: '0.375rem',
+    padding: '0.75rem',
+    marginTop: '0.5rem',
+    outline: 'none',
+    width: '100%',
+    transition: 'all 0.2s ease-in-out',
   };
 
   return (
@@ -64,47 +63,42 @@ export default function GetInTouch() {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}
-      style={{ width: "100%", backgroundColor: "#3b3395", overflowX: "hidden" }}
+      style={{ width: '100%', backgroundColor: '#3b3395', overflowX: 'hidden' }}
     >
-      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "4rem 0.2rem", width: "100%" }}>
-        <h1 style={{ fontSize: "2.25rem", fontWeight: 800, color: "#fff", textAlign: "center", marginBottom: "1.5rem" }}>
+      <div style={{ maxWidth: '80rem', margin: '0 auto', padding: '4rem 0.25rem', width: '100%' }}>
+        <h1 style={{ fontSize: '2.25rem', fontWeight: '800', color: 'white', textAlign: 'center', marginBottom: '1.5rem' }}>
           Get in Touch
         </h1>
-        <p style={{ textAlign: "center", color: "#fff", marginBottom: "3rem" }}>
+        <p style={{ textAlign: 'center', color: 'white', marginBottom: '3rem' }}>
           We&apos;d love to hear from you! Fill out the form below.
         </p>
 
-        <div style={{ display: "flex", justifyContent: "center" }}>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
           <motion.form
             onSubmit={handleSubmit}
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
             style={{
-              backgroundColor: "#3b3395",
-              borderRadius: "1rem",
-              padding: "2rem",
-              display: "flex",
-              flexDirection: "column",
-              gap: "1rem",
-              width: "100%",
-              maxWidth: "600px",
-              boxShadow: "0 12px 17px rgba(0,0,0,0.1)",
+              backgroundColor: '#3b3395',
+              borderRadius: '0.75rem',
+              padding: '2rem',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1rem',
+              width: '100%',
+              maxWidth: '42rem',
+              boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
             }}
           >
             {submitted && (
-              <p style={{ color: "#16A34A", fontWeight: 600, marginBottom: "1rem" }}>
+              <p style={{ color: '#16a34a', fontWeight: '600', marginBottom: '1rem' }}>
                 Thank you! Your message has been sent.
               </p>
             )}
 
-            {/* Name & Surname - responsive */}
-            <div style={{
-              display: isLargeScreen ? 'flex' : 'block',
-              gap: isLargeScreen ? '1.5rem' : '0',
-              flexWrap: 'wrap'
-            }}>
-              <label style={{ display: "block", color: "#fff", flex: 1 }}>
+            <div style={{ display: isLargeScreen ? 'flex' : 'block', gap: isLargeScreen ? '1.5rem' : '0', flexWrap: 'wrap' }}>
+              <label style={{ display: 'block', color: 'white', flex: 1 }}>
                 Name
                 <input
                   type="text"
@@ -117,7 +111,7 @@ export default function GetInTouch() {
                 />
               </label>
 
-              <label style={{ display: "block", color: "#fff", flex: 1 }}>
+              <label style={{ display: 'block', color: 'white', flex: 1 }}>
                 Surname
                 <input
                   type="text"
@@ -131,12 +125,12 @@ export default function GetInTouch() {
               </label>
             </div>
 
-            <label style={{ display: "flex", flexDirection: "column", color: "#fff" }}>
+            <label style={{ display: 'flex', flexDirection: 'column', color: 'white' }}>
               Email
               <input type="email" name="email" value={formData.email} onChange={handleChange} required style={baseInputStyle} />
             </label>
 
-            <label style={{ display: "flex", flexDirection: "column", color: "#fff" }}>
+            <label style={{ display: 'flex', flexDirection: 'column', color: 'white' }}>
               Message
               <textarea name="message" value={formData.message} onChange={handleChange} rows={5} required style={baseInputStyle}></textarea>
             </label>
@@ -144,15 +138,17 @@ export default function GetInTouch() {
             <button
               type="submit"
               style={{
-                backgroundColor: "#FBBF24",
-                color: "#3b3395",
-                padding: "0.75rem 1.5rem",
-                borderRadius: "0.5rem",
-                fontWeight: 600,
-                cursor: "pointer",
-                border: "none",
-                transition: "all 0.3s ease",
+                backgroundColor: '#fbbf24',
+                color: '#3b3395',
+                padding: '0.75rem 1.5rem',
+                borderRadius: '0.375rem',
+                fontWeight: '600',
+                cursor: 'pointer',
+                border: 'none',
+                transition: 'all 0.3s ease-in-out',
               }}
+              onMouseOver={(e) => (e.currentTarget.style.opacity = '0.8')}
+              onMouseOut={(e) => (e.currentTarget.style.opacity = '1')}
             >
               Submit
             </button>

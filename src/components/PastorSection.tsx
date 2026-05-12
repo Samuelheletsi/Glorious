@@ -44,6 +44,7 @@ export default function PastorSection({ data }: { data: PastorProps[] }) {
             marginBottom: '4rem',
           }}
         >
+          
           {/* Pastor Image */}
           <motion.img
             src={pastor.image}
